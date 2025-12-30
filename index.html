@@ -1,0 +1,2143 @@
+calendario_seo
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+  <!-- SEO base (neutro, tool-first) -->
+  <title>Crear calendario personalizado gratis en PDF | CalendarioPersonalizado.es</title>
+  <meta name="description" content="Crea un calendario personalizado gratis en PDF (A3) con fotos por día, portada y cabeceras mensuales. Sin registro y listo para imprimir."/>
+  <meta name="robots" content="index,follow"/>
+  <link rel="canonical" href="./"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Crear calendario personalizado gratis en PDF"/>
+  <meta property="og:description" content="Generador online para crear un calendario A3 con fotos por día, portada y cabeceras mensuales. Sin registro y listo para imprimir."/>
+  <meta property="og:type" content="website"/>
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="Crear calendario personalizado gratis en PDF"/>
+  <meta name="twitter:description" content="Generador online para crear un calendario A3 con fotos por día, portada y cabeceras mensuales. Sin registro y listo para imprimir."/>
+
+  <style>
+    :root{
+      --bg:#0b0c10; --card:#12141b; --text:#eaeef7; --muted:#a8b0c2; --line:#2a2f3d;
+      --btn:#eaeef7; --btnText:#0b0c10; --chip:#0f1118; --ok:#9effc6; --warn:#ffd79a; --err:#ffb0b0;
+    }
+    *{ box-sizing:border-box; }
+    body{ margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:var(--bg); color:var(--text); }
+    a{ color:inherit; text-decoration:underline; text-underline-offset:3px; }
+    .wrap{ max-width:1240px; margin:0 auto; padding:24px; }
+    .card{ background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px; }
+    .grid{ display:grid; grid-template-columns: 1fr 1fr; gap:14px; align-items:start; }
+    @media (max-width: 980px){ .grid{ grid-template-columns: 1fr; } }
+
+    /* HERO */
+    .hero{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border-radius:18px;
+      padding:22px;
+      margin-bottom:14px;
+      display:grid;
+      gap:14px;
+    }
+    .hero h1{ margin:0; font-size:clamp(1.6rem, 2.4vw, 2.2rem); letter-spacing:0.2px; }
+    .hero p{ margin:0; color:var(--muted); line-height:1.45; }
+    .hero .row{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+    .btn{
+      appearance:none; border:0; background:var(--btn); color:var(--btnText);
+      padding:12px 14px; border-radius:12px; font-weight:900; cursor:pointer;
+    }
+    .btn.secondary{ background:#bfc7da; }
+    .chips{ display:flex; gap:8px; flex-wrap:wrap; }
+    .chip{ background:var(--chip); border:1px solid var(--line); color:var(--muted); padding:6px 10px; border-radius:999px; font-size:.92rem; }
+    .section{ margin-top:14px; }
+    .section h2{ margin:0 0 10px; font-size:1.25rem; }
+    .section h3{ margin:12px 0 6px; font-size:1.05rem; }
+    .small{ font-size:.92rem; color:var(--muted); line-height:1.45; }
+    .hr{ border:0; border-top:1px solid var(--line); margin:14px 0; }
+
+    /* FAQ UX */
+    .faqGrid{ display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
+    @media (max-width: 980px){ .faqGrid{ grid-template-columns: 1fr; } }
+    .qa{ border:1px solid var(--line); border-radius:14px; padding:12px; background:#0f1118; }
+    .qa .q{ font-weight:900; margin:0 0 6px; }
+    .qa .a{ margin:0; color:var(--muted); line-height:1.45; }
+
+    /* APP styles (mantiene la app) */
+    label{ display:block; font-weight:800; margin:10px 0 6px; text-transform:uppercase; }
+    input, select, textarea{
+      width:100%; padding:10px 12px; border-radius:12px; border:1px solid var(--line);
+      background:#0f1118; color:var(--text);
+    }
+    textarea{ min-height:110px; resize:vertical; }
+    .row2{ display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
+    .drop{ border:2px dashed #3b4153; border-radius:16px; padding:16px; text-align:center; background:rgba(255,255,255,0.02); }
+    .drop.drag{ border-color:#8aa2ff; background:rgba(138,162,255,0.08); }
+    .kpi{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
+    .pill{ border:1px solid var(--line); background:#0f1118; padding:6px 10px; border-radius:999px; font-size:.9rem; color:var(--muted); text-transform:uppercase; }
+    .actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; align-items:center; }
+    .previewWrap{ background:#0f1118; border:1px solid var(--line); border-radius:16px; padding:12px; }
+    canvas#preview{ width:100%; height:auto; display:block; border-radius:12px; background:#fff; touch-action:none; }
+    .box{ border:1px solid var(--line); border-radius:14px; padding:12px; background:#0f1118; }
+    .subttl{ font-weight:900; margin:0 0 8px; text-transform:uppercase; }
+    .sliderRow{ display:grid; grid-template-columns: 1fr 120px; gap:10px; align-items:center; }
+    input[type="range"]{ width:100%; }
+    .miniBtn{
+      padding:10px 12px; border-radius:12px; border:1px solid var(--line);
+      background:#151825; color:var(--text); font-weight:900; text-transform:uppercase; cursor:pointer;
+    }
+    .hide{ display:none !important; }
+    .statusOk{ color:var(--ok); }
+    .statusWarn{ color:var(--warn); }
+    .statusErr{ color:var(--err); }
+
+    /* Footer links */
+    .linkGrid{ display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px; }
+    @media (max-width: 980px){ .linkGrid{ grid-template-columns: 1fr; } }
+    .linkCard{ border:1px solid var(--line); border-radius:14px; padding:12px; background:#0f1118; }
+    .linkCard p{ margin:6px 0 0; color:var(--muted); }
+  </style>
+
+  <!-- Schema (SoftwareApplication + HowTo + FAQPage) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@graph":[
+      {
+        "@type":"SoftwareApplication",
+        "name":"Generador de calendario personalizado en PDF",
+        "applicationCategory":"DesignApplication",
+        "operatingSystem":"Web",
+        "offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+        "description":"Generador online para crear un calendario A3 personalizado con fotos por día, portada y cabeceras mensuales. Exportación en PDF listo para imprimir."
+      },
+      {
+        "@type":"HowTo",
+        "name":"Cómo crear un calendario personalizado en PDF",
+        "description":"Pasos para generar un calendario A3 personalizado con fotos por día y descargarlo en PDF listo para imprimir.",
+        "step":[
+          {"@type":"HowToStep","name":"Sube tus fotos","text":"Sube tus fotos diarias y, si lo necesitas, los fondos y cabeceras por mes."},
+          {"@type":"HowToStep","name":"Configura portada y meses","text":"Ajusta la portada y la cabecera de cada mes (zoom, posición, rotación y marcos)."},
+          {"@type":"HowToStep","name":"Revisa la vista previa","text":"Comprueba el resultado en la vista previa antes de exportar."},
+          {"@type":"HowToStep","name":"Descarga el PDF","text":"Genera el PDF A3 del mes o de todo el año, listo para imprimir."}
+        ]
+      },
+      {
+        "@type":"FAQPage",
+        "mainEntity":[
+          {"@type":"Question","name":"¿Puedo crear el calendario gratis?","acceptedAnswer":{"@type":"Answer","text":"Sí. Puedes crear el calendario y descargar el PDF sin registro."}},
+          {"@type":"Question","name":"¿El PDF está listo para imprimir en A3?","acceptedAnswer":{"@type":"Answer","text":"Sí. El generador exporta en formato A3 y puedes elegir orientación vertical u horizontal."}},
+          {"@type":"Question","name":"¿Puedo poner una foto distinta en cada día?","acceptedAnswer":{"@type":"Answer","text":"Sí. Puedes asignar una imagen a cada día del mes. Si hay dos imágenes para la misma fecha, se colocan juntas en ese día."}},
+          {"@type":"Question","name":"¿Necesito instalar programas?","acceptedAnswer":{"@type":"Answer","text":"No. Funciona directamente en el navegador."}},
+          {"@type":"Question","name":"¿Cómo se asignan las fotos diarias?","acceptedAnswer":{"@type":"Answer","text":"Puedes asignarlas por nombre (recomendado) usando la fecha, por ejemplo 1221 para 21 de diciembre, o por orden."}},
+          {"@type":"Question","name":"¿Puedo editar portada y cabeceras?","acceptedAnswer":{"@type":"Answer","text":"Sí. Puedes mover, hacer zoom y rotar la imagen. En cabeceras también puedes elegir marcos diferentes por foto."}},
+          {"@type":"Question","name":"¿Se pueden marcar sábados, domingos y festivos?","acceptedAnswer":{"@type":"Answer","text":"Los sábados y domingos aparecen en rojo. Puedes añadir festivos extra en el campo de 'Festivos extra'."}},
+          {"@type":"Question","name":"¿Puedo guardar y recuperar mi proyecto?","acceptedAnswer":{"@type":"Answer","text":"Sí. Puedes exportar e importar un ZIP con la configuración y las imágenes."}}
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <div class="wrap">
+    <!-- HOME HERO (SEO + UX) -->
+    <section class="hero" aria-label="Crear calendario personalizado gratis en PDF">
+      <div>
+        <h1>Crear calendario personalizado gratis en PDF</h1>
+        <p>
+          Generador online para crear un calendario A3 con fotos por día, portada y cabeceras mensuales.
+          Sin registro y listo para imprimir.
+        </p>
+      </div>
+      <div class="row">
+        <button class="btn" id="ctaStart" type="button">Crear calendario ahora</button>
+        <a class="btn secondary" href="#como-funciona" style="text-decoration:none;">Cómo funciona</a>
+      </div>
+      <div class="chips" aria-label="Características principales">
+        <span class="chip">PDF A3</span>
+        <span class="chip">Fotos por día</span>
+        <span class="chip">Portada y cabeceras</span>
+        <span class="chip">Fondos por mes (opcional)</span>
+        <span class="chip">Exportar / importar ZIP</span>
+      </div>
+      <p class="small">
+        Consejo: para reutilizar tus fotos cada año, usa nombres tipo <strong>1221</strong> (21 de diciembre) o <strong>20261221</strong>.
+      </p>
+    </section>
+
+    <!-- APP (HÍBRIDA: TOOL-FIRST) -->
+    <main id="app" class="grid" aria-label="Aplicación para crear el calendario">
+      <section class="card" aria-label="Controles">
+        <div class="row2">
+          <div>
+            <label for="year">AÑO</label>
+            <input id="year" type="number" min="1900" max="2100" value="2026"/>
+          </div>
+          <div>
+            <label for="editMonth">MES A CONFIGURAR</label>
+            <select id="editMonth">
+              <option value="0">PORTADA</option>
+              <option value="1">ENERO</option><option value="2">FEBRERO</option><option value="3">MARZO</option>
+              <option value="4">ABRIL</option><option value="5">MAYO</option><option value="6">JUNIO</option>
+              <option value="7">JULIO</option><option value="8">AGOSTO</option><option value="9">SEPTIEMBRE</option>
+              <option value="10">OCTUBRE</option><option value="11">NOVIEMBRE</option><option value="12">DICIEMBRE</option>
+            </select>
+          </div>
+        </div>
+
+        <label for="orientation">ORIENTACIÓN PDF</label>
+        <select id="orientation">
+          <option value="portrait">A3 VERTICAL</option>
+          <option value="landscape">A3 APAISADO</option>
+        </select>
+
+        <label for="coverUpload">PORTADA (IMAGEN)</label>
+        <input id="coverUpload" type="file" accept="image/*"/>
+
+        <div id="coverTitleControls" class="box" style="margin-top:12px;">
+          <div class="subttl">TÍTULO PORTADA (ARRASTRABLE)</div>
+
+          <label for="coverTitle" style="margin-top:0;">TEXTO</label>
+          <input id="coverTitle" type="text" placeholder="EJ: CALENDARIO 2026"/>
+
+          <div class="row2">
+            <div>
+              <label for="coverTitleSize">TAMAÑO TEXTO</label>
+              <div class="sliderRow">
+                <input id="coverTitleSize" type="range" min="3" max="18" value="10"/>
+                <div class="small" id="coverTitleSizeVal">10%</div>
+              </div>
+            </div>
+            <div>
+              <label for="coverTitleBg">FONDO TEXTO</label>
+              <select id="coverTitleBg">
+                <option value="none">SIN CAJA</option>
+                <option value="light">CAJA CLARA</option>
+                <option value="dark">CAJA OSCURA</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="fontsCoverOnly">
+            <label for="coverTitleFont">TIPOGRAFÍA TÍTULO PORTADA</label>
+            <select id="coverTitleFont"></select>
+          </div>
+
+          <div class="row2" style="margin-top:10px;">
+            <button class="miniBtn" id="centerCoverTitle" type="button">CENTRAR TÍTULO</button>
+            <button class="miniBtn" id="resetCoverTitle" type="button">RESET TÍTULO</button>
+          </div>
+
+          <p class="small" style="margin:10px 0 0;">ARRASTRA EL TÍTULO EN LA VISTA PREVIA PARA MOVERLO.</p>
+        </div>
+
+        <hr class="hr"/>
+
+        <div id="fontsMonthOnly" class="box">
+          <div class="subttl">TIPOGRAFÍAS CALENDARIO</div>
+
+          <label for="monthTitleFont">TÍTULO DEL MES (ARRASTRABLE)</label>
+          <select id="monthTitleFont"></select>
+
+          <label for="weekdayFont">DÍAS DE LA SEMANA</label>
+          <select id="weekdayFont"></select>
+
+          <label for="dayNumberFont">NÚMEROS</label>
+          <select id="dayNumberFont"></select>
+
+          <label for="captionFont">TEXTO BAJO FOTO DIARIA</label>
+          <select id="captionFont"></select>
+        </div>
+
+        <hr class="hr"/>
+
+        <label for="bgUploads">FONDOS (12 IMÁGENES) — NOMBRE: ENERO, FEBRERO, ...</label>
+        <input id="bgUploads" type="file" accept="image/*" multiple/>
+
+        <label for="headerUploads">FOTOS CABECERA (HASTA 48) — NOMBRE: ENERO1..ENERO4, FEBRERO1..</label>
+        <input id="headerUploads" type="file" accept="image/*" multiple/>
+
+        <label for="headerCount" id="headerCountLabel">NÚMERO DE FOTOS ARRIBA (ESTE MES)</label>
+        <select id="headerCount">
+          <option value="1">1 FOTO</option>
+          <option value="2">2 FOTOS</option>
+          <option value="3">3 FOTOS</option>
+          <option value="4">4 FOTOS</option>
+        </select>
+
+        <div class="box" style="margin-top:12px;">
+          <div class="subttl" id="adjustTitle">AJUSTES CABECERA (SE GUARDAN POR MES)</div>
+
+          <div id="headerOnlyControls">
+            <label for="editHeaderIndex" style="margin-top:0;">EDITAR FOTO</label>
+            <select id="editHeaderIndex">
+              <option value="0">FOTO 1</option>
+              <option value="1">FOTO 2</option>
+              <option value="2">FOTO 3</option>
+              <option value="3">FOTO 4</option>
+            </select>
+
+            <div class="row2" style="margin-top:10px;">
+              <button class="miniBtn" id="layerUp" type="button">SUBIR CAPA</button>
+              <button class="miniBtn" id="layerDown" type="button">BAJAR CAPA</button>
+            </div>
+
+            <label style="margin-top:10px;">MARCO (SOLO ESTA FOTO)</label>
+            <div class="row2">
+              <div style="display:flex; gap:10px; align-items:center;">
+                <input id="headerFrameEnabled" type="checkbox" checked style="width:auto; transform:scale(1.2);" />
+                <span class="small">ACTIVAR</span>
+              </div>
+              <div>
+                <select id="headerFrameStyle"></select>
+              </div>
+            </div>
+          </div>
+
+          <label for="zoom">ZOOM (TAMAÑO)</label>
+          <div class="sliderRow">
+            <input id="zoom" type="range" min="10" max="260" value="100"/>
+            <div class="small" id="zoomVal">100%</div>
+          </div>
+
+          <label for="rot">ROTACIÓN</label>
+          <div class="sliderRow">
+            <input id="rot" type="range" min="-45" max="45" value="0"/>
+            <div class="small" id="rotVal">0°</div>
+          </div>
+
+          <div style="display:flex; gap:10px; margin-top:10px;">
+            <button class="miniBtn" id="resetOne" type="button">RESET</button>
+            <button class="miniBtn" id="resetAll" type="button">RESET TODO</button>
+          </div>
+
+          <p class="small" style="margin:10px 0 0;">POSICIÓN X/Y SE AJUSTA ARRASTRANDO EN LA VISTA PREVIA.</p>
+        </div>
+
+        <label for="mode">ASIGNACIÓN FOTOS DIARIAS</label>
+        <select id="mode">
+          <option value="name">POR NOMBRE (RECOMENDADO)</option>
+          <option value="order">POR ORDEN</option>
+        </select>
+
+        <label>SI HAY 2 FOTOS EL MISMO DÍA</label>
+        <select id="dayTwoMode">
+          <option value="auto">AUTO</option>
+          <option value="vertical">VERTICAL (LADO A LADO)</option>
+          <option value="horizontal">HORIZONTAL (UNA ENCIMA DE OTRA)</option>
+        </select>
+
+        <label for="dayPhotos">FOTOS DIARIAS (COMUNES PARA TODO EL AÑO)</label>
+        <input id="dayPhotos" type="file" accept="image/*" multiple/>
+
+        <label for="extraHolidays">FESTIVOS EXTRA (YYYY-MM-DD, UNO POR LÍNEA)</label>
+        <textarea id="extraHolidays"></textarea>
+
+        <div class="kpi" id="kpi"></div>
+
+        <div class="actions">
+          <button class="btn secondary" id="previewBtn" type="button">Vista previa</button>
+          <button class="btn secondary" id="downloadMonthBtn" type="button">PDF A3 este mes</button>
+          <button class="btn" id="downloadYearBtn" type="button">PDF A3 todo el año</button>
+
+          <button class="btn secondary" id="exportZipBtn" type="button">Exportar ZIP</button>
+          <button class="btn secondary" id="importZipBtn" type="button">Importar ZIP</button>
+          <input id="importZipInput" type="file" accept=".zip" class="hide"/>
+
+          <span class="small" id="status" role="status" aria-live="polite"></span>
+        </div>
+      </section>
+
+      <aside class="card" aria-label="Vista previa y arrastrar archivos">
+        <div class="drop" id="dropAll">
+          <div style="font-weight:900; margin-bottom:6px; text-transform:uppercase;">Arrastra aquí archivos</div>
+          <div class="small">Puedes arrastrar fondos, cabeceras y fotos diarias a la vez.</div>
+        </div>
+
+        <div class="previewWrap" style="margin-top:12px;">
+          <div class="small" style="margin-bottom:8px;" id="previewTitle">VISTA PREVIA</div>
+          <canvas id="preview"></canvas>
+          <p class="small" style="margin:10px 0 0;">
+            Controles: arrastra para mover · SHIFT+arrastrar para rotar · CTRL+rueda (portada) para zoom.
+          </p>
+        </div>
+      </aside>
+    </main>
+
+    <!-- SEO + IA: BLOQUES BAJO LA APP -->
+    <section class="section card" aria-label="Qué hace esta herramienta">
+      <h2>Qué puedes hacer con este generador de calendarios</h2>
+      <ul class="small" style="margin:0; padding-left:18px;">
+        <li>Crear un calendario anual personalizado y descargarlo en PDF.</li>
+        <li>Asignar una foto distinta a cada día del mes.</li>
+        <li>Configurar portada, fondos por mes (opcional) y cabeceras mensuales.</li>
+        <li>Editar cabeceras: posición, zoom, rotación y marcos por foto.</li>
+        <li>Exportar e importar un ZIP con configuración e imágenes para reutilizar el proyecto.</li>
+      </ul>
+
+      <hr class="hr"/>
+
+      <div id="como-funciona"></div>
+      <h2>Cómo crear tu calendario personalizado</h2>
+      <ol class="small" style="margin:0; padding-left:18px;">
+        <li>Sube la imagen de portada y el título (opcional).</li>
+        <li>Sube fondos por mes (si quieres) con nombres: ENERO, FEBRERO, etc.</li>
+        <li>Sube cabeceras por mes con nombres: ENERO1, ENERO2… (hasta 4).</li>
+        <li>Sube fotos diarias. Recomendado: nombres tipo 1221 o 20261221 para asignación por fecha.</li>
+        <li>Revisa la vista previa y descarga el PDF A3 del mes o de todo el año.</li>
+      </ol>
+    </section>
+
+    <!-- FAQ UX (visibles, claras, sin acordeón) -->
+    <section class="section card" aria-label="Preguntas frecuentes">
+      <h2>Preguntas frecuentes</h2>
+      <div class="faqGrid">
+        <div class="qa">
+          <p class="q">¿Puedo crear el calendario gratis?</p>
+          <p class="a">Sí. Puedes crear el calendario y descargar el PDF sin registro.</p>
+        </div>
+        <div class="qa">
+          <p class="q">¿El PDF está listo para imprimir en A3?</p>
+          <p class="a">Sí. El PDF se genera en formato A3 y puedes elegir orientación vertical u horizontal.</p>
+        </div>
+        <div class="qa">
+          <p class="q">¿Puedo poner una foto distinta en cada día?</p>
+          <p class="a">Sí. Puedes asignar una imagen por día. Si hay dos imágenes para la misma fecha, se colocan juntas en ese día.</p>
+        </div>
+        <div class="qa">
+          <p class="q">¿Cómo se asignan las fotos diarias?</p>
+          <p class="a">Por nombre (recomendado) usando la fecha: 1221 para 21 de diciembre o 20261221. También puedes asignar por orden.</p>
+        </div>
+        <div class="qa">
+          <p class="q">¿Necesito instalar programas?</p>
+          <p class="a">No. Funciona directamente en el navegador.</p>
+        </div>
+        <div class="qa">
+          <p class="q">¿Puedo editar portada y cabeceras?</p>
+          <p class="a">Sí. Puedes mover, hacer zoom y rotar. En las cabeceras, cada foto puede tener su propio marco.</p>
+        </div>
+        <div class="qa">
+          <p class="q">¿Se marcan fines de semana y festivos?</p>
+          <p class="a">Los sábados y domingos aparecen en rojo. Puedes añadir festivos extra (YYYY-MM-DD) en el campo correspondiente.</p>
+        </div>
+        <div class="qa">
+          <p class="q">¿Puedo guardar y recuperar mi proyecto?</p>
+          <p class="a">Sí. Usa Exportar ZIP para guardar configuración e imágenes y Importar ZIP para recuperar el proyecto.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enlaces internos (soporte SEO) -->
+    <section class="section card" aria-label="Enlaces de ayuda y páginas relacionadas">
+      <h2>Páginas relacionadas</h2>
+      <div class="linkGrid">
+        <div class="linkCard">
+          <a href="#app"><strong>Ir al generador</strong></a>
+          <p class="small">Crear y exportar el calendario en PDF A3.</p>
+        </div>
+        <div class="linkCard">
+          <a href="#como-funciona"><strong>Cómo funciona</strong></a>
+          <p class="small">Pasos para crear y descargar el calendario.</p>
+        </div>
+        <div class="linkCard">
+          <a href="#"><strong>Guía de impresión</strong></a>
+          <p class="small">Recomendación: crear una página /imprimir-calendario-a3.</p>
+        </div>
+      </div>
+      <p class="small" style="margin:10px 0 0;">
+        Nota: cuando publiques el sitio, sustituye el enlace “Guía de impresión” por tu URL real.
+      </p>
+    </section>
+  </div>
+
+  <!-- libs defer -->
+  <script defer src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+
+  <!-- APP JS (igual que la versión optimizada; con CTA scroll a la app) -->
+  <script defer>
+  window.addEventListener("DOMContentLoaded", () => {
+    const $ = (id) => document.getElementById(id);
+
+    // CTA scroll (hero -> app)
+    const cta = $("ctaStart");
+    if(cta){
+      cta.addEventListener("click", () => {
+        const app = $("app");
+        if(app) app.scrollIntoView({behavior:"smooth", block:"start"});
+      });
+    }
+
+    // ---------- CONSTANTES ----------
+    const monthNames = ["", "ENERO","FEBRERO","MARZO","ABRIL","MAYO","JUNIO","JULIO","AGOSTO","SEPTIEMBRE","OCTUBRE","NOVIEMBRE","DICIEMBRE"];
+    const monthKeys  = ["", "enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+    const weekdaysFull = ["LUNES","MARTES","MIÉRCOLES","JUEVES","VIERNES","SÁBADO","DOMINGO"];
+
+    const FONT_OPTIONS = [
+      { label:"SYSTEM (RECOMENDADO)", css:"system-ui, -apple-system, Segoe UI, Roboto, Arial" },
+      { label:"ARIAL", css:"Arial, Helvetica, sans-serif" },
+      { label:"VERDANA", css:"Verdana, Geneva, sans-serif" },
+      { label:"TREBUCHET", css:"Trebuchet MS, Arial, sans-serif" },
+      { label:"GEORGIA", css:"Georgia, 'Times New Roman', serif" },
+      { label:"TIMES", css:"'Times New Roman', Times, serif" },
+      { label:"COURIER", css:"'Courier New', Courier, monospace" },
+      { label:"IMPACT", css:"Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif" }
+    ];
+
+    const FRAME_OPTIONS = [
+      { value:"none", label:"SIN MARCO" },
+      { value:"classic", label:"CLÁSICO" },
+      { value:"thin", label:"MUY FINO" },
+      { value:"double", label:"DOBLE" },
+      { value:"dashed", label:"DISCONTINUO" },
+      { value:"shadow", label:"CON SOMBRA" },
+      { value:"polaroid", label:"POLAROID" },
+      { value:"rounded", label:"REDONDEADO" },
+      { value:"softRounded", label:"REDONDEADO + BORDE FINO" },
+      { value:"oval", label:"ÓVALO" },
+      { value:"circle", label:"CÍRCULO" },
+      { value:"pill", label:"PÍLDORA" },
+      { value:"ticket", label:"TICKET (MUESCAS)" },
+      { value:"stamp", label:"SELLO" },
+      { value:"tape", label:"PEGATINA (CINTA)" }
+    ];
+
+    // ---------- UI ----------
+    const yearEl = $("year");
+    const editMonthEl = $("editMonth");
+    const orientationEl = $("orientation");
+
+    const coverUploadEl = $("coverUpload");
+    const coverTitleEl = $("coverTitle");
+    const coverTitleSizeEl = $("coverTitleSize");
+    const coverTitleSizeVal = $("coverTitleSizeVal");
+    const coverTitleBgEl = $("coverTitleBg");
+    const coverTitleFontEl = $("coverTitleFont");
+    const centerCoverTitleBtn = $("centerCoverTitle");
+    const resetCoverTitleBtn = $("resetCoverTitle");
+
+    const fontsCoverOnlyWrap = $("fontsCoverOnly");
+    const fontsMonthOnlyWrap = $("fontsMonthOnly");
+
+    const monthTitleFontEl = $("monthTitleFont");
+    const weekdayFontEl = $("weekdayFont");
+    const dayNumberFontEl = $("dayNumberFont");
+    const captionFontEl = $("captionFont");
+
+    const bgUploadsEl = $("bgUploads");
+    const headerUploadsEl = $("headerUploads");
+    const headerCountLabelEl = $("headerCountLabel");
+    const headerCountEl = $("headerCount");
+
+    const adjustTitleEl = $("adjustTitle");
+    const headerOnlyControlsEl = $("headerOnlyControls");
+    const editHeaderIndexEl = $("editHeaderIndex");
+    const layerUpBtn = $("layerUp");
+    const layerDownBtn = $("layerDown");
+
+    const headerFrameEnabledEl = $("headerFrameEnabled");
+    const headerFrameStyleEl = $("headerFrameStyle");
+
+    const zoomEl = $("zoom"); const zoomVal = $("zoomVal");
+    const rotEl  = $("rot");  const rotVal  = $("rotVal");
+    const resetOneBtn = $("resetOne");
+    const resetAllBtn = $("resetAll");
+
+    const modeEl = $("mode");
+    const dayTwoModeEl = $("dayTwoMode");
+    const dayInput = $("dayPhotos");
+
+    const dropAll = $("dropAll");
+    const previewBtn = $("previewBtn");
+    const downloadMonthBtn = $("downloadMonthBtn");
+    const downloadYearBtn = $("downloadYearBtn");
+
+    const exportZipBtn = $("exportZipBtn");
+    const importZipBtn = $("importZipBtn");
+    const importZipInput = $("importZipInput");
+
+    const statusEl = $("status");
+    const kpiEl = $("kpi");
+    const extraHolidaysEl = $("extraHolidays");
+    const previewCanvas = $("preview");
+    const previewTitleEl = $("previewTitle");
+
+    // ---------- STATE ----------
+    let coverFile = null;
+    let dayFiles = [];
+    const bmpCache = new Map(); // name -> ImageBitmap
+    let hitItems = [];
+    let currentMonth = 0;
+
+    const DEFAULT_ADJ = () => ({ zoomPct:100, xPct:0, yPct:0, rotDeg:0 });
+
+    const fonts = {
+      coverTitleFont: FONT_OPTIONS[0].css,
+      monthTitleFont: FONT_OPTIONS[0].css,
+      weekdayFont: FONT_OPTIONS[0].css,
+      dayNumberFont: FONT_OPTIONS[0].css,
+      captionFont: FONT_OPTIONS[0].css
+    };
+
+    const coverState = {
+      adj: DEFAULT_ADJ(),
+      title: "",
+      titleX: 0,
+      titleY: 35,
+      titleSizePct: 10,
+      titleBg: "light"
+    };
+
+    const monthState = {};
+    for (let m=1;m<=12;m++){
+      monthState[m] = {
+        bgFile: null,
+        headerFiles: [null,null,null,null],
+        headerAdj: [DEFAULT_ADJ(),DEFAULT_ADJ(),DEFAULT_ADJ(),DEFAULT_ADJ()],
+        headerCount: 1,
+        headerFrameEnabled: [true,true,true,true],
+        headerFrameStyle: ["classic","classic","classic","classic"],
+        monthTitleX: 0,
+        monthTitleY: 0
+      };
+    }
+
+    // ---------- UTILS ----------
+    const clamp = (n,a,b)=> (n<a?a:(n>b?b:n));
+    const pad2 = (n)=> (n<10?"0"+n:""+n);
+    const pctTo01 = (pct)=> (clamp(pct,-100,100)+100)/200;
+
+    const setStatus = (msg, cls="")=>{
+      statusEl.className = "small " + (cls==="ok" ? "statusOk" : cls==="warn" ? "statusWarn" : cls==="err" ? "statusErr" : "");
+      statusEl.textContent = (msg||"").toUpperCase();
+    };
+
+    async function fileToBitmap(file){
+      if(!file) return null;
+      const key = file.name;
+      if(bmpCache.has(key)) return bmpCache.get(key);
+      const bmp = await createImageBitmap(file);
+      bmpCache.set(key, bmp);
+      return bmp;
+    }
+
+    const normalizeBase = (name)=> name.replace(/\.[^.]+$/, "").trim().toLowerCase();
+
+    function parseMonthFromBgName(fileName){
+      const base = normalizeBase(fileName);
+      for(let m=1;m<=12;m++) if(base===monthKeys[m]) return m;
+      return null;
+    }
+
+    function parseMonthAndIndexFromHeader(fileName){
+      const base = normalizeBase(fileName);
+      for(let m=1;m<=12;m++){
+        const key = monthKeys[m];
+        let mm = base.match(new RegExp("^" + key + "([1-4])$"));
+        if(mm) return { month:m, idx: parseInt(mm[1],10) };
+        mm = base.match(new RegExp("^" + key + "[-_ ]?([1-4])$"));
+        if(mm) return { month:m, idx: parseInt(mm[1],10) };
+      }
+      return null;
+    }
+
+    const daysInMonth = (year, month)=> new Date(year, month, 0).getDate();
+    const firstWeekdayMon0 = (year, month)=> ((new Date(year, month-1, 1).getDay()+6)%7);
+    const isoDate = (year, month, day)=> `${year}-${pad2(month)}-${pad2(day)}`;
+
+    function parseDayFromName(name, year, month){
+      const base = name.replace(/\.[^.]+$/, "");
+      let m = base.match(/(\d{4})[-_.](\d{1,2})[-_.](\d{1,2})/);
+      if(m){ const y=+m[1], mo=+m[2], d=+m[3]; if(y===year && mo===month && d>=1 && d<=31) return d; }
+      m = base.match(/(\d{4})(\d{2})(\d{2})/);
+      if(m){ const y=+m[1], mo=+m[2], d=+m[3]; if(y===year && mo===month && d>=1 && d<=31) return d; }
+      m = base.match(/^(\d{2})(\d{2})(?:_.*)?$/);
+      if(m){ const mo=+m[1], d=+m[2]; if(mo===month && d>=1 && d<=31) return d; }
+      m = base.match(/^0?(\d{1,2})(?:_.*)?$/);
+      if(m){ const d=+m[1]; if(d>=1 && d<=31) return d; }
+      return null;
+    }
+
+    function getCaptionFromFilename(filename){
+      const base = filename.replace(/\.[^.]+$/, "");
+      const idx = base.indexOf("_");
+      if(idx===-1) return "";
+      const caption = base.slice(idx+1).trim();
+      if(!caption) return "";
+      if(/^\d+$/.test(caption)) return "";
+      return caption.toUpperCase();
+    }
+
+    const sortFilesByName = (list)=> [...list].sort((a,b)=>a.name.localeCompare(b.name, undefined, {numeric:true, sensitivity:"base"}));
+
+    function parseExtraHolidays(){
+      const raw = (extraHolidaysEl.value||"").split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+      const set = new Set();
+      for(const line of raw) if(/^\d{4}-\d{2}-\d{2}$/.test(line)) set.add(line);
+      return set;
+    }
+
+    function wrapText(ctx, text, maxWidth){
+      const words = text.split(/\s+/).filter(Boolean);
+      const lines = [];
+      let line = "";
+      for(const w of words){
+        const test = line ? line + " " + w : w;
+        if(ctx.measureText(test).width <= maxWidth) line = test;
+        else { if(line) lines.push(line); line = w; }
+      }
+      if(line) lines.push(line);
+      return lines;
+    }
+
+    function fillSelect(sel, options, getter){
+      sel.innerHTML = "";
+      for(const opt of options){
+        const o = document.createElement("option");
+        o.value = getter(opt, "value");
+        o.textContent = getter(opt, "label");
+        sel.appendChild(o);
+      }
+    }
+    fillSelect(coverTitleFontEl, FONT_OPTIONS, (o,k)=> k==="value"?o.css:o.label);
+    fillSelect(monthTitleFontEl, FONT_OPTIONS, (o,k)=> k==="value"?o.css:o.label);
+    fillSelect(weekdayFontEl, FONT_OPTIONS, (o,k)=> k==="value"?o.css:o.label);
+    fillSelect(dayNumberFontEl, FONT_OPTIONS, (o,k)=> k==="value"?o.css:o.label);
+    fillSelect(captionFontEl, FONT_OPTIONS, (o,k)=> k==="value"?o.css:o.label);
+    fillSelect(headerFrameStyleEl, FRAME_OPTIONS, (o,k)=> k==="value"?o.value:o.label);
+
+    function syncFontsUI(){
+      coverTitleFontEl.value = fonts.coverTitleFont;
+      monthTitleFontEl.value = fonts.monthTitleFont;
+      weekdayFontEl.value = fonts.weekdayFont;
+      dayNumberFontEl.value = fonts.dayNumberFont;
+      captionFontEl.value = fonts.captionFont;
+    }
+
+    function ensureMonthFix(m){
+      const ms = monthState[m];
+      if(!ms) return;
+      if(!Array.isArray(ms.headerFiles) || ms.headerFiles.length!==4) ms.headerFiles=[ms.headerFiles?.[0]||null, ms.headerFiles?.[1]||null, ms.headerFiles?.[2]||null, ms.headerFiles?.[3]||null];
+      if(!Array.isArray(ms.headerAdj) || ms.headerAdj.length!==4){
+        const oa = ms.headerAdj || [];
+        ms.headerAdj = [
+          oa[0]?{...DEFAULT_ADJ(),...oa[0]}:DEFAULT_ADJ(),
+          oa[1]?{...DEFAULT_ADJ(),...oa[1]}:DEFAULT_ADJ(),
+          oa[2]?{...DEFAULT_ADJ(),...oa[2]}:DEFAULT_ADJ(),
+          oa[3]?{...DEFAULT_ADJ(),...oa[3]}:DEFAULT_ADJ(),
+        ];
+      }
+      if(!Array.isArray(ms.headerFrameEnabled) || ms.headerFrameEnabled.length!==4) ms.headerFrameEnabled=[true,true,true,true];
+      if(!Array.isArray(ms.headerFrameStyle) || ms.headerFrameStyle.length!==4) ms.headerFrameStyle=["classic","classic","classic","classic"];
+      if(typeof ms.monthTitleX!=="number") ms.monthTitleX = 0;
+      if(typeof ms.monthTitleY!=="number") ms.monthTitleY = 0;
+    }
+
+    function setUIForCoverMode(isCover){
+      headerCountLabelEl.classList.toggle("hide", isCover);
+      headerCountEl.classList.toggle("hide", isCover);
+      headerOnlyControlsEl.classList.toggle("hide", isCover);
+      $("coverTitleControls").classList.toggle("hide", !isCover);
+
+      fontsCoverOnlyWrap.classList.toggle("hide", !isCover);
+      fontsMonthOnlyWrap.classList.toggle("hide", isCover);
+
+      adjustTitleEl.textContent = isCover ? "AJUSTES PORTADA (SE GUARDA)" : "AJUSTES CABECERA (SE GUARDAN POR MES)";
+      previewTitleEl.textContent = isCover ? "VISTA PREVIA (PORTADA)" : "VISTA PREVIA (MES)";
+    }
+
+    function updateKPI(){
+      let bgOk=0;
+      for(let m=1;m<=12;m++) if(monthState[m].bgFile) bgOk++;
+      kpiEl.innerHTML="";
+      const pills=[];
+      if(currentMonth===0){
+        pills.push(`CONFIGURANDO: PORTADA`);
+        pills.push(`PORTADA: ${coverFile ? "OK":"FALTA"}`);
+        pills.push(`FONDOS: ${bgOk}/12`);
+        pills.push(`DIARIAS: ${dayFiles.length}`);
+      } else {
+        const ms = monthState[currentMonth]; ensureMonthFix(currentMonth);
+        pills.push(`MES: ${monthNames[currentMonth]}`);
+        pills.push(`FONDO: ${ms.bgFile ? "OK":"(BLANCO)"}`);
+        pills.push(`CABECERAS: ${ms.headerFiles.filter(Boolean).length}`);
+        pills.push(`FONDOS: ${bgOk}/12`);
+        pills.push(`DIARIAS: ${dayFiles.length}`);
+      }
+      for(const t of pills){
+        const s=document.createElement("span");
+        s.className="pill";
+        s.textContent=t;
+        kpiEl.appendChild(s);
+      }
+    }
+
+    function syncCoverUI(){
+      coverTitleEl.value = coverState.title || "";
+      coverTitleSizeEl.value = coverState.titleSizePct ?? 10;
+      coverTitleSizeVal.textContent = `${coverTitleSizeEl.value}%`;
+      coverTitleBgEl.value = coverState.titleBg || "light";
+    }
+
+    function getActiveAdjRef(){
+      if(currentMonth===0) return coverState.adj;
+      ensureMonthFix(currentMonth);
+      const i = clamp(parseInt(editHeaderIndexEl.value,10)||0, 0, 3);
+      return monthState[currentMonth].headerAdj[i];
+    }
+
+    function syncAdjUI(){
+      const a = getActiveAdjRef();
+      zoomEl.value = a.zoomPct ?? 100; zoomVal.textContent = `${zoomEl.value}%`;
+      rotEl.value  = a.rotDeg ?? 0;  rotVal.textContent  = `${rotEl.value}°`;
+    }
+
+    function syncHeaderFrameUI(){
+      if(currentMonth===0) return;
+      ensureMonthFix(currentMonth);
+      const ms = monthState[currentMonth];
+      const i = clamp(parseInt(editHeaderIndexEl.value,10)||0, 0, 3);
+      headerFrameEnabledEl.checked = !!ms.headerFrameEnabled[i];
+      headerFrameStyleEl.value = ms.headerFrameStyle[i] || "classic";
+    }
+
+    function loadMonthToUI(m){
+      currentMonth = m;
+      const isCover = (m===0);
+      setUIForCoverMode(isCover);
+
+      if(isCover){
+        syncCoverUI();
+        syncFontsUI();
+        syncAdjUI();
+        updateKPI();
+        requestPreviewRender(true);
+        return;
+      }
+
+      ensureMonthFix(m);
+      const ms = monthState[m];
+      headerCountEl.value = String(ms.headerCount || 1);
+
+      syncFontsUI();
+      syncHeaderFrameUI();
+      syncAdjUI();
+      updateKPI();
+      requestPreviewRender(true);
+    }
+
+    function saveUIToCurrent(){
+      coverState.title = (coverTitleEl.value || "").toUpperCase();
+      coverState.titleSizePct = parseInt(coverTitleSizeEl.value,10);
+      coverState.titleBg = coverTitleBgEl.value || "light";
+
+      fonts.coverTitleFont = coverTitleFontEl.value;
+      fonts.monthTitleFont = monthTitleFontEl.value;
+      fonts.weekdayFont = weekdayFontEl.value;
+      fonts.dayNumberFont = dayNumberFontEl.value;
+      fonts.captionFont = captionFontEl.value;
+
+      if(currentMonth!==0){
+        const ms = monthState[currentMonth];
+        ms.headerCount = parseInt(headerCountEl.value,10) || 1;
+      }
+    }
+
+    function commitAdjFromUI(){
+      const obj = { zoomPct: parseInt(zoomEl.value,10), rotDeg: parseInt(rotEl.value,10) };
+      if(currentMonth===0) coverState.adj = { ...coverState.adj, ...obj };
+      else {
+        ensureMonthFix(currentMonth);
+        const i = clamp(parseInt(editHeaderIndexEl.value,10)||0, 0, 3);
+        monthState[currentMonth].headerAdj[i] = { ...monthState[currentMonth].headerAdj[i], ...obj };
+      }
+      zoomVal.textContent = `${obj.zoomPct}%`;
+      rotVal.textContent  = `${obj.rotDeg}°`;
+      requestPreviewRender();
+    }
+
+    function commitHeaderFrameFromUI(){
+      if(currentMonth===0) return;
+      ensureMonthFix(currentMonth);
+      const ms = monthState[currentMonth];
+      const i = clamp(parseInt(editHeaderIndexEl.value,10)||0, 0, 3);
+      ms.headerFrameEnabled[i] = !!headerFrameEnabledEl.checked;
+      ms.headerFrameStyle[i] = headerFrameStyleEl.value || "classic";
+      requestPreviewRender();
+    }
+
+    function swapLayer(i,j){
+      if(currentMonth===0) return;
+      ensureMonthFix(currentMonth);
+      if(i<0||j<0||i>3||j>3) return;
+      const ms = monthState[currentMonth];
+      [ms.headerFiles[i], ms.headerFiles[j]] = [ms.headerFiles[j], ms.headerFiles[i]];
+      [ms.headerAdj[i], ms.headerAdj[j]] = [ms.headerAdj[j], ms.headerAdj[i]];
+      [ms.headerFrameEnabled[i], ms.headerFrameEnabled[j]] = [ms.headerFrameEnabled[j], ms.headerFrameEnabled[i]];
+      [ms.headerFrameStyle[i], ms.headerFrameStyle[j]] = [ms.headerFrameStyle[j], ms.headerFrameStyle[i]];
+      editHeaderIndexEl.value = String(j);
+      syncHeaderFrameUI();
+      syncAdjUI();
+      requestPreviewRender();
+    }
+
+    // ---------- RENDER HELPERS ----------
+    function drawCoverCrop(ctx, img, x, y, w, h){
+      const iw=img.width, ih=img.height;
+      const ir=iw/ih, tr=w/h;
+      let sw,sh,sx,sy;
+      if(ir>tr){ sh=ih; sw=ih*tr; sx=(iw-sw)/2; sy=0; }
+      else { sw=iw; sh=iw/tr; sx=0; sy=(ih-sh)/2; }
+      ctx.drawImage(img, sx, sy, sw, sh, x, y, w, h);
+    }
+
+    function drawCoverPanZoom(ctx, img, x, y, w, h, xPct, yPct, zoom){
+      const iw=img.width, ih=img.height;
+      const baseScale=Math.max(w/iw, h/ih);
+      const scale=baseScale*zoom;
+      const dw=iw*scale, dh=ih*scale;
+      const tx=pctTo01(xPct), ty=pctTo01(yPct);
+      const dx=x+(w-dw)*tx, dy=y+(h-dh)*ty;
+      ctx.drawImage(img, dx, dy, dw, dh);
+    }
+
+    function roundRectPath(ctx, x, y, w, h, r){
+      const rr=Math.max(0, Math.min(r, Math.min(w,h)/2));
+      ctx.beginPath();
+      ctx.moveTo(x+rr,y);
+      ctx.lineTo(x+w-rr,y);
+      ctx.quadraticCurveTo(x+w,y,x+w,y+rr);
+      ctx.lineTo(x+w,y+h-rr);
+      ctx.quadraticCurveTo(x+w,y+h,x+w-rr,y+h);
+      ctx.lineTo(x+rr,y+h);
+      ctx.quadraticCurveTo(x,y+h,x,y+h-rr);
+      ctx.lineTo(x,y+rr);
+      ctx.quadraticCurveTo(x,y,x+rr,y);
+      ctx.closePath();
+    }
+
+    function ticketPath(ctx, x, y, w, h, notch){
+      const n=Math.max(2, Math.min(notch, Math.min(w,h)/5));
+      ctx.beginPath();
+      ctx.moveTo(x,y);
+      ctx.lineTo(x+w,y);
+      ctx.lineTo(x+w,y+h*0.32);
+      ctx.arc(x+w, y+h*0.5, n, -Math.PI/2, Math.PI/2, false);
+      ctx.lineTo(x+w,y+h);
+      ctx.lineTo(x,y+h);
+      ctx.lineTo(x,y+h*0.68);
+      ctx.arc(x, y+h*0.5, n, Math.PI/2, -Math.PI/2, false);
+      ctx.closePath();
+    }
+
+    function stampPath(ctx, x, y, w, h){
+      const steps = 18;
+      const amp = Math.min(w,h)*0.03;
+      ctx.beginPath();
+      for(let i=0;i<=steps;i++){
+        const t=i/steps;
+        const px = x + t*w;
+        const py = y + (i%2===0 ? 0 : amp);
+        if(i===0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+      }
+      for(let i=0;i<=steps;i++){
+        const t=i/steps;
+        const px = x + w - (i%2===0 ? 0 : amp);
+        const py = y + t*h;
+        ctx.lineTo(px, py);
+      }
+      for(let i=0;i<=steps;i++){
+        const t=i/steps;
+        const px = x + w - t*w;
+        const py = y + h - (i%2===0 ? 0 : amp);
+        ctx.lineTo(px, py);
+      }
+      for(let i=0;i<=steps;i++){
+        const t=i/steps;
+        const px = x + (i%2===0 ? 0 : amp);
+        const py = y + h - t*h;
+        ctx.lineTo(px, py);
+      }
+      ctx.closePath();
+    }
+
+    function applyClipLocal(ctx, style, w, h){
+      if(!style || style==="none") return false;
+      if(style==="classic"||style==="thin"||style==="double"||style==="dashed"||style==="shadow"||style==="polaroid"||style==="tape") return false;
+
+      const x=-w/2, y=-h/2;
+      const minDim=Math.min(w,h);
+
+      if(style==="rounded"||style==="softRounded"){ roundRectPath(ctx,x,y,w,h, Math.round(minDim*0.12)); ctx.clip(); return true; }
+      if(style==="oval"){ ctx.beginPath(); ctx.ellipse(0,0,w/2,h/2,0,0,Math.PI*2); ctx.closePath(); ctx.clip(); return true; }
+      if(style==="circle"){ const r=minDim/2; ctx.beginPath(); ctx.ellipse(0,0,r,r,0,0,Math.PI*2); ctx.closePath(); ctx.clip(); return true; }
+      if(style==="pill"){ roundRectPath(ctx,x,y,w,h, Math.round(minDim/2)); ctx.clip(); return true; }
+      if(style==="ticket"){ ticketPath(ctx,x,y,w,h, Math.round(minDim*0.09)); ctx.clip(); return true; }
+      if(style==="stamp"){ stampPath(ctx,x,y,w,h); ctx.clip(); return true; }
+      return false;
+    }
+
+    function drawFrameLocal(ctx, style, w, h){
+      if(!style || style==="none") return;
+      if(style==="polaroid" || style==="tape") return;
+
+      const minDim=Math.min(w,h);
+      const x=-w/2, y=-h/2;
+
+      let border=Math.max(2, Math.round(minDim*0.028));
+      if(style==="thin"||style==="softRounded") border=Math.max(2, Math.round(minDim*0.015));
+
+      ctx.save();
+      if(style==="shadow"){
+        ctx.shadowColor="rgba(0,0,0,0.35)";
+        ctx.shadowBlur=Math.max(6, Math.round(minDim*0.06));
+        ctx.shadowOffsetX=Math.round(minDim*0.02);
+        ctx.shadowOffsetY=Math.round(minDim*0.02);
+      }
+
+      if(style==="dashed") ctx.setLineDash([Math.max(6, border*2), Math.max(6, border*1.6)]);
+      else ctx.setLineDash([]);
+
+      ctx.strokeStyle="rgba(255,255,255,0.96)";
+      ctx.lineWidth=border;
+
+      if(style==="rounded"||style==="softRounded"){ roundRectPath(ctx,x,y,w,h, Math.round(minDim*0.12)); ctx.stroke(); ctx.restore(); return; }
+      if(style==="oval"){ ctx.beginPath(); ctx.ellipse(0,0,w/2,h/2,0,0,Math.PI*2); ctx.stroke(); ctx.restore(); return; }
+      if(style==="circle"){ const r=minDim/2; ctx.beginPath(); ctx.ellipse(0,0,r,r,0,0,Math.PI*2); ctx.stroke(); ctx.restore(); return; }
+      if(style==="pill"){ roundRectPath(ctx,x,y,w,h, Math.round(minDim/2)); ctx.stroke(); ctx.restore(); return; }
+      if(style==="ticket"){ ticketPath(ctx,x,y,w,h, Math.round(minDim*0.09)); ctx.stroke(); ctx.restore(); return; }
+      if(style==="stamp"){ stampPath(ctx,x,y,w,h); ctx.stroke(); ctx.restore(); return; }
+
+      ctx.strokeRect(x+border/2, y+border/2, w-border, h-border);
+
+      if(style==="double"){
+        ctx.setLineDash([]);
+        ctx.lineWidth=Math.max(1, Math.round(border*0.5));
+        ctx.strokeStyle="rgba(255,255,255,0.80)";
+        ctx.strokeRect(x+border*1.2, y+border*1.2, w-border*2.4, h-border*2.4);
+      }
+      ctx.restore();
+    }
+
+    function drawTapeOverlay(ctx, w, h){
+      const minDim=Math.min(w,h);
+      const tW = Math.max(18, Math.round(minDim*0.22));
+      const tH = Math.max(10, Math.round(minDim*0.08));
+      ctx.save();
+      ctx.fillStyle="rgba(255,255,255,0.45)";
+      ctx.rotate(-8 * Math.PI/180);
+      ctx.fillRect(-w/2 + tW*0.15, -h/2 - tH*0.2, tW, tH);
+      ctx.rotate(16 * Math.PI/180);
+      ctx.fillRect(w/2 - tW*1.15, h/2 - tH*0.8, tW, tH);
+      ctx.restore();
+    }
+
+    function drawPolaroidLocal(ctx, bmp, dw, dh){
+      const minDim=Math.min(dw,dh);
+      const border=Math.max(2, Math.round(minDim*0.012));
+      const pad=Math.max(6, Math.round(minDim*0.030));
+      const bottomExtra=Math.max(18, Math.round(dh*0.20));
+
+      const plateX=-dw/2 - pad;
+      const plateY=-dh/2 - pad;
+      const plateW=dw + pad*2;
+      const plateH=dh + pad*2 + bottomExtra;
+
+      ctx.save();
+      ctx.shadowColor="rgba(0,0,0,0.22)";
+      ctx.shadowBlur=Math.max(6, Math.round(minDim*0.045));
+      ctx.shadowOffsetX=Math.round(minDim*0.012);
+      ctx.shadowOffsetY=Math.round(minDim*0.012);
+      ctx.fillStyle="rgba(255,255,255,0.98)";
+      ctx.fillRect(plateX, plateY, plateW, plateH);
+      ctx.restore();
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(-dw/2, -dh/2, dw, dh);
+      ctx.clip();
+      ctx.drawImage(bmp, -dw/2, -dh/2, dw, dh);
+      ctx.restore();
+
+      ctx.save();
+      ctx.lineWidth=border;
+      ctx.strokeStyle="rgba(0,0,0,0.12)";
+      ctx.strokeRect(plateX+border/2, plateY+border/2, plateW-border, plateH-border);
+      ctx.lineWidth=Math.max(1, Math.round(border*0.6));
+      ctx.strokeStyle="rgba(0,0,0,0.10)";
+      ctx.strokeRect(-dw/2, -dh/2, dw, dh);
+      ctx.restore();
+    }
+
+    function baseContainSize(iw, ih, w, h){
+      const s=Math.min(w/iw, h/ih);
+      return { bw: iw*s, bh: ih*s };
+    }
+
+    async function drawMonthBackground(ctx, W, H, bgFile){
+      ctx.fillStyle="#fff";
+      ctx.fillRect(0,0,W,H);
+      if(!bgFile) return;
+      const bmp=await fileToBitmap(bgFile);
+      if(!bmp) return;
+      drawCoverCrop(ctx,bmp,0,0,W,H);
+      ctx.fillStyle="rgba(255,255,255,0.20)";
+      ctx.fillRect(0,0,W,H);
+    }
+
+    function makeDayMapping(year, month, mode){
+      const ndays = daysInMonth(year,month);
+      const mapping = new Array(ndays+1);
+      for(let i=0;i<=ndays;i++) mapping[i]=[];
+
+      if(mode==="order"){
+        const ordered = sortFilesByName(dayFiles);
+        let i=0;
+        for(let d=1; d<=ndays && i<ordered.length; d++) mapping[d].push(ordered[i++]);
+        let d=1;
+        while(i<ordered.length){
+          if(mapping[d].length<2) mapping[d].push(ordered[i++]);
+          d++; if(d>ndays) d=1;
+        }
+        return mapping;
+      }
+
+      for(const f of dayFiles){
+        const d = parseDayFromName(f.name, year, month);
+        if(d && d<=ndays && mapping[d].length<2) mapping[d].push(f);
+      }
+      return mapping;
+    }
+
+    function rectFromPctInPage(W,H, xPct, yPct){
+      const tx=pctTo01(xPct), ty=pctTo01(yPct);
+      return { x: tx*W, y: ty*H };
+    }
+
+    // ---------- PREVIEW RENDER SCHEDULER ----------
+    let previewPending = false;
+    let previewForceHits = true;
+
+    function computePreviewTargetSize(){
+      const rect = previewCanvas.getBoundingClientRect();
+      const dpr = Math.min(2, window.devicePixelRatio || 1);
+      const maxW = 1400;
+      const w = Math.max(600, Math.min(maxW, Math.round(rect.width * dpr)));
+      const isLand = (orientationEl.value === "landscape");
+      const ratio = isLand ? (3508/4961) : (4961/3508);
+      const h = Math.round(w * ratio);
+      return { W:w, H:h };
+    }
+
+    async function doPreviewRender(){
+      previewPending = false;
+      try{
+        saveUIToCurrent();
+        const { W, H } = computePreviewTargetSize();
+        if(previewCanvas.width !== W || previewCanvas.height !== H){
+          previewCanvas.width = W;
+          previewCanvas.height = H;
+        }
+        const needHits = previewForceHits;
+        previewForceHits = false;
+
+        if(currentMonth === 0){
+          await renderCover(previewCanvas, W, H, needHits);
+        } else {
+          await renderMonth(previewCanvas, W, H, currentMonth, needHits);
+        }
+      }catch(e){
+        console.error(e);
+        setStatus("ERROR EN VISTA PREVIA (F12).","err");
+      }
+    }
+
+    function requestPreviewRender(forceHits=false){
+      if(forceHits) previewForceHits = true;
+      if(previewPending) return;
+      previewPending = true;
+      requestAnimationFrame(doPreviewRender);
+    }
+
+    // ---------- PDF OFFSCREEN REUSE ----------
+    const pdfCanvas = document.createElement("canvas");
+
+    function getA3PixelSize(){
+      let W=3508, H=4961;
+      if(orientationEl.value==="landscape"){ const t=W; W=H; H=t; }
+      return { W, H };
+    }
+
+    // ---------- RENDER: COVER ----------
+    async function renderCover(canvas, W, H, forHit){
+      const ctx=canvas.getContext("2d");
+      ctx.setTransform(1,0,0,1,0,0);
+      ctx.imageSmoothingEnabled = true;
+
+      ctx.fillStyle="#fff";
+      ctx.fillRect(0,0,W,H);
+
+      if(forHit) hitItems = [];
+
+      if(!coverFile){
+        ctx.fillStyle="#111";
+        ctx.font=`900 ${Math.round(Math.min(W,H)*0.06)}px ${FONT_OPTIONS[0].css}`;
+        ctx.textAlign="center"; ctx.textBaseline="middle";
+        ctx.fillText("SUBE UNA IMAGEN DE PORTADA", W/2, H/2);
+        return;
+      }
+
+      const bmp = await fileToBitmap(coverFile);
+      if(!bmp) return;
+
+      const adj=coverState.adj;
+      const rot=clamp(adj.rotDeg,-45,45)*Math.PI/180;
+      const cx=W/2, cy=H/2;
+
+      if(forHit){
+        hitItems.push({ kind:"coverImage", cx:W/2, cy:H/2, w:W, h:H, rot, zone:{bx:0,by:0,bw:W,bh:H} });
+      }
+
+      ctx.save();
+      ctx.translate(cx,cy);
+      ctx.rotate(rot);
+      ctx.translate(-cx,-cy);
+      const zoom=clamp((adj.zoomPct||100)/100, 0.10, 2.6);
+      drawCoverPanZoom(ctx,bmp,0,0,W,H, adj.xPct||0, adj.yPct||0, zoom);
+      ctx.restore();
+
+      const title=(coverState.title||"").trim().toUpperCase();
+      if(title){
+        const sizePct=clamp(coverState.titleSizePct??10,3,18);
+        const fontPx=Math.round(Math.min(W,H)*(sizePct/100));
+        ctx.font=`900 ${fontPx}px ${fonts.coverTitleFont}`;
+        ctx.textAlign="center"; ctx.textBaseline="middle";
+
+        const pos = rectFromPctInPage(W,H, coverState.titleX??0, coverState.titleY??35);
+        const pad=Math.round(fontPx*0.35);
+
+        const maxW=Math.round(W*0.86);
+        const lines=wrapText(ctx,title,maxW).slice(0,3);
+        const lineH=Math.round(fontPx*1.15);
+        const textH=lines.length*lineH;
+        const textW=Math.min(maxW, Math.max(...lines.map(l=>ctx.measureText(l).width)));
+
+        const boxW=Math.round(textW+pad*2);
+        const boxH=Math.round(textH+pad*1.4);
+        const boxX=Math.round(pos.x-boxW/2);
+        const boxY=Math.round(pos.y-boxH/2);
+
+        if(coverState.titleBg==="light"){
+          ctx.fillStyle="rgba(255,255,255,0.72)";
+          ctx.fillRect(boxX,boxY,boxW,boxH);
+        } else if(coverState.titleBg==="dark"){
+          ctx.fillStyle="rgba(0,0,0,0.45)";
+          ctx.fillRect(boxX,boxY,boxW,boxH);
+        }
+
+        ctx.fillStyle = (coverState.titleBg==="dark") ? "#fff" : "#111";
+        let ty = boxY + (boxH-textH)/2 + lineH/2;
+        for(const line of lines){
+          ctx.fillText(line, pos.x, ty);
+          ty += lineH;
+        }
+
+        if(forHit){
+          hitItems.push({ kind:"coverTitle", cx:pos.x, cy:pos.y, w:boxW, h:boxH, rot:0, zone:{bx:0,by:0,bw:W,bh:H} });
+        }
+      }
+    }
+
+    // ---------- RENDER: MONTH ----------
+    async function renderMonth(canvas, W, H, month, forHit){
+      const ctx=canvas.getContext("2d");
+      ctx.setTransform(1,0,0,1,0,0);
+      ctx.imageSmoothingEnabled = true;
+
+      const year = parseInt(yearEl.value,10);
+      ensureMonthFix(month);
+      const ms = monthState[month];
+
+      const headerCount = clamp(ms.headerCount||1, 1, 4);
+      const mode = modeEl.value;
+      const dayTwoMode = dayTwoModeEl.value;
+
+      const ndays = daysInMonth(year,month);
+      const start = firstWeekdayMon0(year,month);
+      const holidaySet = parseExtraHolidays();
+      const dayMapping = makeDayMapping(year,month,mode);
+
+      if(forHit) hitItems = [];
+
+      await drawMonthBackground(ctx,W,H, ms.bgFile);
+
+      const margin=Math.round(W*0.045);
+      const gap=Math.max(10, Math.round(W*0.004));
+      const headerZoneH=Math.round(H*0.52);
+
+      const headerX=margin, headerY=margin;
+      const headerW=W-2*margin;
+      const headerH=headerZoneH-gap;
+
+      const defaultTitleY=headerY+headerH+Math.round(gap*0.65);
+      const titleH=Math.round(H*0.040);
+
+      const calX=margin;
+      const calY=defaultTitleY+titleH+Math.round(gap*0.55);
+      const calW=W-2*margin;
+      const calH=H-margin-calY;
+
+      const headerZone = { x:headerX, y:headerY, w:headerW, h:headerH };
+
+      const filesToUse = ms.headerFiles.slice(0, headerCount);
+      for(let i=0;i<filesToUse.length;i++){
+        const f=filesToUse[i];
+        if(!f) continue;
+        const bmp=await fileToBitmap(f);
+        if(!bmp) continue;
+
+        const { bw, bh } = baseContainSize(bmp.width, bmp.height, headerZone.w, headerZone.h);
+        const adj = ms.headerAdj[i] || DEFAULT_ADJ();
+        const z = clamp((adj.zoomPct??100)/100, 0.10, 2.60);
+        const dw=bw*z, dh=bh*z;
+
+        const tx=pctTo01(adj.xPct??0);
+        const ty=pctTo01(adj.yPct??0);
+        const cx = headerZone.x + headerZone.w*tx;
+        const cy = headerZone.y + headerZone.h*ty;
+
+        const rot=clamp(adj.rotDeg??0, -45, 45)*Math.PI/180;
+
+        const frameEnabled = !!ms.headerFrameEnabled[i];
+        const frameStyle = ms.headerFrameStyle[i] || "classic";
+
+        ctx.save();
+        ctx.translate(cx,cy);
+        ctx.rotate(rot);
+
+        if(frameEnabled && frameStyle==="polaroid"){
+          drawPolaroidLocal(ctx, bmp, dw, dh);
+        } else {
+          if(frameEnabled) applyClipLocal(ctx, frameStyle, dw, dh);
+          ctx.drawImage(bmp, -dw/2, -dh/2, dw, dh);
+          if(frameEnabled) drawFrameLocal(ctx, frameStyle, dw, dh);
+          if(frameEnabled && frameStyle==="tape") drawTapeOverlay(ctx, dw, dh);
+        }
+        ctx.restore();
+
+        if(forHit){
+          hitItems.push({ kind:"header", i, cx, cy, w:dw, h:dh, rot, zone:{bx:headerZone.x, by:headerZone.y, bw:headerZone.w, bh:headerZone.h} });
+        }
+      }
+
+      const titleText = `${monthNames[month]} ${year}`.toUpperCase();
+      ctx.fillStyle="#111";
+      ctx.textBaseline="middle";
+      ctx.textAlign="center";
+      ctx.font=`900 ${Math.round(titleH*0.78)}px ${fonts.monthTitleFont}`;
+
+      const baseX = W/2;
+      const baseY = defaultTitleY + titleH/2;
+      const dx = (ms.monthTitleX || 0) / 100 * (W * 0.45);
+      const dy = (ms.monthTitleY || 0) / 100 * (H * 0.25);
+      const titleX = baseX + dx;
+      const titleY = baseY + dy;
+
+      const metrics = ctx.measureText(titleText);
+      const boxW = Math.round(metrics.width + titleH*1.2);
+      const boxH = Math.round(titleH*1.2);
+
+      ctx.fillText(titleText, titleX, titleY);
+
+      if(forHit){
+        hitItems.push({ kind:"monthTitle", cx:titleX, cy:titleY, w:boxW, h:boxH, rot:0, zone:{bx:0,by:0,bw:W,bh:H} });
+      }
+
+      const headerStripH = Math.round(calH*0.12);
+      const cols=7, rows=6;
+      const cellW=Math.floor(calW/cols);
+      const cellH=Math.floor((calH-headerStripH)/rows);
+      const gridW=cellW*cols;
+      const gridH=cellH*rows;
+
+      const gx=calX+Math.floor((calW-gridW)/2);
+      const gy=(calY+headerStripH)+Math.floor(((calH-headerStripH)-gridH)/2);
+
+      ctx.fillStyle="rgba(255,255,255,0.92)";
+      ctx.fillRect(calX, calY, calW, headerStripH);
+
+      ctx.textAlign="center";
+      ctx.textBaseline="middle";
+      ctx.fillStyle="#111";
+      ctx.font=`900 ${Math.round(headerStripH*0.30)}px ${fonts.weekdayFont}`;
+      for(let c=0;c<cols;c++){
+        ctx.fillText(weekdaysFull[c], gx+c*cellW+cellW/2, calY+headerStripH/2);
+      }
+
+      ctx.fillStyle="rgba(255,255,255,0.88)";
+      ctx.fillRect(gx, gy, gridW, gridH);
+
+      ctx.strokeStyle="rgba(0,0,0,0.20)";
+      ctx.lineWidth=Math.max(1, Math.round(W*0.00045));
+      for(let c=0;c<=cols;c++){
+        const x=gx+c*cellW+0.5;
+        ctx.beginPath(); ctx.moveTo(x,gy); ctx.lineTo(x,gy+gridH); ctx.stroke();
+      }
+      for(let r=0;r<=rows;r++){
+        const y=gy+r*cellH+0.5;
+        ctx.beginPath(); ctx.moveTo(gx,y); ctx.lineTo(gx+gridW,y); ctx.stroke();
+      }
+
+      const bitmapCache = new Map();
+      for(let d=1; d<=ndays; d++){
+        const arr = dayMapping[d];
+        for(let k=0;k<arr.length;k++){
+          const f=arr[k];
+          if(f && !bitmapCache.has(f.name)) bitmapCache.set(f.name, await fileToBitmap(f));
+        }
+      }
+
+      function containRect(imgW, imgH, x, y, w, h){
+        const s=Math.min(w/imgW, h/imgH);
+        const dw=Math.round(imgW*s);
+        const dh=Math.round(imgH*s);
+        const dx=Math.round(x+(w-dw)/2);
+        const dy=Math.round(y+(h-dh)/2);
+        return { dx,dy,dw,dh };
+      }
+      function drawContain(ctx, img, x,y,w,h){
+        const r=containRect(img.width,img.height,x,y,w,h);
+        ctx.drawImage(img,r.dx,r.dy,r.dw,r.dh);
+      }
+
+      for(let d=1; d<=ndays; d++){
+        const idx=start+(d-1);
+        const rr=Math.floor(idx/7);
+        const cc=idx%7;
+        if(rr<0||rr>=rows) continue;
+
+        const x=gx+cc*cellW;
+        const y=gy+rr*cellH;
+
+        const dateKey=isoDate(year,month,d);
+        const isWeekend=(cc===5||cc===6);
+        const isHoliday=holidaySet.has(dateKey);
+
+        const captionH=Math.round(cellH*0.26);
+        const imgH=cellH-captionH;
+
+        ctx.fillStyle="#fff";
+        ctx.fillRect(x+1,y+1,cellW-2,imgH-2);
+
+        const files=dayMapping[d]||[];
+        const imgs=files.slice(0,2).map(f=>({f,bmp:bitmapCache.get(f.name)})).filter(o=>o.bmp);
+
+        let split=dayTwoMode;
+        if(split==="auto") split=(cellW>=imgH)?"vertical":"horizontal";
+
+        if(imgs.length===1){
+          drawContain(ctx,imgs[0].bmp,x+1,y+1,cellW-2,imgH-2);
+        } else if(imgs.length>=2){
+          if(split==="horizontal"){
+            const hh=Math.floor((imgH-2)/2);
+            drawContain(ctx,imgs[0].bmp,x+1,y+1,cellW-2,hh-1);
+            drawContain(ctx,imgs[1].bmp,x+1,y+1+hh+1,cellW-2,(imgH-2)-hh-1);
+          } else {
+            const ww=Math.floor((cellW-2)/2);
+            drawContain(ctx,imgs[0].bmp,x+1,y+1,ww-1,imgH-2);
+            drawContain(ctx,imgs[1].bmp,x+1+ww+1,y+1,(cellW-2)-ww-1,imgH-2);
+          }
+        }
+
+        ctx.fillStyle="#fff";
+        ctx.fillRect(x+1,y+imgH+1,cellW-2,captionH-2);
+
+        let caption="";
+        if(files.length===1) caption=getCaptionFromFilename(files[0].name);
+        if(files.length>=2){
+          const c1=getCaptionFromFilename(files[0].name);
+          const c2=getCaptionFromFilename(files[1].name);
+          caption=[c1,c2].filter(Boolean).join(" | ").toUpperCase();
+        }
+
+        if(caption){
+          const padX=Math.round(cellW*0.06);
+          const maxW=cellW-padX*2;
+          const fontSize=Math.max(12, Math.round(captionH*0.34));
+          ctx.fillStyle="#111";
+          ctx.font=`900 ${fontSize}px ${fonts.captionFont}`;
+          ctx.textBaseline="middle";
+          ctx.textAlign="center";
+          const lines=wrapText(ctx,caption,maxW).slice(0,2);
+          const lineH=Math.round(fontSize*1.15);
+          const totalH=lines.length*lineH;
+          let ty=y+imgH+Math.floor((captionH-totalH)/2)+lineH/2;
+          for(const line of lines){ ctx.fillText(line, x+cellW/2, ty); ty+=lineH; }
+        }
+
+        const numColor=(isWeekend||isHoliday) ? "#c1121f" : "#111";
+        const numFont=Math.round(imgH*0.28);
+        ctx.font=`900 ${numFont}px ${fonts.dayNumberFont}`;
+        ctx.textBaseline="top";
+        ctx.textAlign="left";
+        ctx.fillStyle="rgba(255,255,255,0.88)";
+        const boxWn=Math.round(numFont*1.25);
+        const boxHn=Math.round(numFont*1.05);
+        ctx.fillRect(x+10, y+10, boxWn, boxHn);
+        ctx.fillStyle=numColor;
+        ctx.fillText(String(d), x+16, y+10);
+      }
+    }
+
+    // ---------- PDF ----------
+    downloadMonthBtn.addEventListener("click", async ()=>{
+      try{
+        saveUIToCurrent();
+        if(currentMonth===0){ setStatus("LA PORTADA NO SE EXPORTA COMO MES.","warn"); return; }
+
+        setStatus("GENERANDO PDF DEL MES…","");
+        const { W, H } = getA3PixelSize();
+        pdfCanvas.width=W; pdfCanvas.height=H;
+
+        await renderMonth(pdfCanvas, W, H, currentMonth, false);
+
+        const { jsPDF } = window.jspdf;
+        const orientation=orientationEl.value;
+        const pw=(orientation==="landscape")?420:297;
+        const ph=(orientation==="landscape")?297:420;
+
+        const pdf=new jsPDF({orientation, unit:"mm", format:"a3"});
+        pdf.addImage(pdfCanvas.toDataURL("image/jpeg",0.88),"JPEG",0,0,pw,ph,undefined,"FAST");
+        pdf.save(`${yearEl.value}_${monthNames[currentMonth]}_A3.pdf`.toUpperCase());
+        setStatus("PDF MES DESCARGADO ✅","ok");
+      }catch(e){ console.error(e); setStatus("ERROR PDF MES (F12).","err"); }
+    });
+
+    downloadYearBtn.addEventListener("click", async ()=>{
+      try{
+        saveUIToCurrent();
+        if(!coverFile){ setStatus("FALTA PORTADA.","err"); return; }
+
+        setStatus("GENERANDO PDF ANUAL…","");
+        const { jsPDF } = window.jspdf;
+        const orientation=orientationEl.value;
+        const pw=(orientation==="landscape")?420:297;
+        const ph=(orientation==="landscape")?297:420;
+
+        const pdf=new jsPDF({orientation, unit:"mm", format:"a3"});
+
+        {
+          const { W, H } = getA3PixelSize();
+          pdfCanvas.width=W; pdfCanvas.height=H;
+          await renderCover(pdfCanvas, W, H, false);
+          pdf.addImage(pdfCanvas.toDataURL("image/jpeg",0.88),"JPEG",0,0,pw,ph,undefined,"FAST");
+        }
+
+        pdf.addPage();
+
+        for(let m=1;m<=12;m++){
+          pdf.addPage();
+          const { W, H } = getA3PixelSize();
+          pdfCanvas.width=W; pdfCanvas.height=H;
+          await renderMonth(pdfCanvas, W, H, m, false);
+          pdf.addImage(pdfCanvas.toDataURL("image/jpeg",0.88),"JPEG",0,0,pw,ph,undefined,"FAST");
+        }
+
+        pdf.save(`${yearEl.value}_CALENDARIO_A3_ANUAL.pdf`.toUpperCase());
+        setStatus("PDF ANUAL DESCARGADO ✅","ok");
+      }catch(e){ console.error(e); setStatus("ERROR PDF ANUAL (F12).","err"); }
+    });
+
+    // ---------- ZIP EXPORT/IMPORT ----------
+    function mimeFromName(name){
+      const ext=(name.split(".").pop()||"").toLowerCase();
+      if(ext==="png") return "image/png";
+      if(ext==="jpg"||ext==="jpeg") return "image/jpeg";
+      if(ext==="webp") return "image/webp";
+      if(ext==="gif") return "image/gif";
+      if(ext==="bmp") return "image/bmp";
+      return "application/octet-stream";
+    }
+    function downloadBlob(blob, filename){
+      const url=URL.createObjectURL(blob);
+      const a=document.createElement("a");
+      a.href=url; a.download=filename;
+      document.body.appendChild(a);
+      a.click(); a.remove();
+      setTimeout(()=>URL.revokeObjectURL(url), 1500);
+    }
+
+    function shallowCloneMonthConfig(m){
+      ensureMonthFix(m);
+      const ms=monthState[m];
+      return {
+        headerCount: ms.headerCount,
+        bgName: ms.bgFile ? ms.bgFile.name : null,
+        headerNames: ms.headerFiles.map(f=>f?f.name:null),
+        headerAdj: ms.headerAdj.map(a=>({zoomPct:a.zoomPct,xPct:a.xPct,yPct:a.yPct,rotDeg:a.rotDeg})),
+        headerFrameEnabled: ms.headerFrameEnabled.slice(),
+        headerFrameStyle: ms.headerFrameStyle.slice(),
+        monthTitleX: ms.monthTitleX || 0,
+        monthTitleY: ms.monthTitleY || 0
+      };
+    }
+
+    exportZipBtn.addEventListener("click", async ()=>{
+      try{
+        saveUIToCurrent();
+        setStatus("EXPORTANDO ZIP…","");
+
+        if(!window.JSZip){ setStatus("NO SE CARGÓ JSZIP (REVISA INTERNET/CDN).","err"); return; }
+
+        const zip=new JSZip();
+        const config={
+          version: 5,
+          year: parseInt(yearEl.value,10),
+          orientation: orientationEl.value,
+          mode: modeEl.value,
+          dayTwoMode: dayTwoModeEl.value,
+          extraHolidays: (extraHolidaysEl.value||""),
+          fonts: JSON.parse(JSON.stringify(fonts)),
+          cover: { fileName: coverFile ? coverFile.name : null, state: JSON.parse(JSON.stringify(coverState)) },
+          months: {},
+          dayPhotoNames: dayFiles.map(f=>f.name)
+        };
+        for(let m=1;m<=12;m++) config.months[m]=shallowCloneMonthConfig(m);
+
+        zip.file("config.json", JSON.stringify(config,null,2));
+
+        const images=zip.folder("images");
+        if(coverFile) images.file("cover/"+coverFile.name, await coverFile.arrayBuffer());
+
+        const bgs=images.folder("backgrounds");
+        for(let m=1;m<=12;m++){
+          const f=monthState[m].bgFile;
+          if(f) bgs.file(f.name, await f.arrayBuffer());
+        }
+
+        const headers=images.folder("headers");
+        for(let m=1;m<=12;m++){
+          ensureMonthFix(m);
+          for(const f of monthState[m].headerFiles) if(f) headers.file(f.name, await f.arrayBuffer());
+        }
+
+        const days=images.folder("days");
+        for(const f of dayFiles) days.file(f.name, await f.arrayBuffer());
+
+        const out=await zip.generateAsync({type:"blob", compression:"DEFLATE", compressionOptions:{level:6}});
+        downloadBlob(out, `${yearEl.value}_PROYECTO_CALENDARIO.zip`.toUpperCase());
+        setStatus("ZIP EXPORTADO ✅","ok");
+      }catch(e){ console.error(e); setStatus("ERROR EXPORTANDO ZIP (F12).","err"); }
+    });
+
+    importZipBtn.addEventListener("click", ()=>importZipInput.click());
+
+    importZipInput.addEventListener("change", async (e)=>{
+      const file = e.target.files && e.target.files[0] ? e.target.files[0] : null;
+      importZipInput.value="";
+      if(!file) return;
+
+      try{
+        setStatus("IMPORTANDO ZIP…","");
+        if(!window.JSZip){ setStatus("NO SE CARGÓ JSZIP (REVISA INTERNET/CDN).","err"); return; }
+
+        const zip = await JSZip.loadAsync(await file.arrayBuffer());
+        const cfgFile = zip.file("config.json");
+        if(!cfgFile){ setStatus("ZIP SIN CONFIG.JSON.","err"); return; }
+        const cfg = JSON.parse(await cfgFile.async("string"));
+        if(!cfg || !cfg.version){ setStatus("CONFIG INVÁLIDA.","err"); return; }
+
+        coverFile=null;
+        dayFiles=[];
+        bmpCache.clear();
+
+        for(let m=1;m<=12;m++){
+          monthState[m].bgFile=null;
+          monthState[m].headerFiles=[null,null,null,null];
+          monthState[m].headerAdj=[DEFAULT_ADJ(),DEFAULT_ADJ(),DEFAULT_ADJ(),DEFAULT_ADJ()];
+          monthState[m].headerCount=1;
+          monthState[m].headerFrameEnabled=[true,true,true,true];
+          monthState[m].headerFrameStyle=["classic","classic","classic","classic"];
+          monthState[m].monthTitleX=0;
+          monthState[m].monthTitleY=0;
+        }
+
+        yearEl.value = String(cfg.year ?? yearEl.value);
+        orientationEl.value = cfg.orientation || orientationEl.value;
+        modeEl.value = cfg.mode || modeEl.value;
+        dayTwoModeEl.value = cfg.dayTwoMode || dayTwoModeEl.value;
+        extraHolidaysEl.value = cfg.extraHolidays || "";
+
+        if(cfg.fonts){
+          fonts.coverTitleFont = cfg.fonts.coverTitleFont || fonts.coverTitleFont;
+          fonts.monthTitleFont = cfg.fonts.monthTitleFont || fonts.monthTitleFont;
+          fonts.weekdayFont = cfg.fonts.weekdayFont || fonts.weekdayFont;
+          fonts.dayNumberFont = cfg.fonts.dayNumberFont || fonts.dayNumberFont;
+          fonts.captionFont = cfg.fonts.captionFont || fonts.captionFont;
+        }
+
+        if(cfg.cover?.state){
+          const s=cfg.cover.state;
+          coverState.adj = { ...coverState.adj, ...(s.adj||{}) };
+          coverState.title = (s.title||"").toUpperCase();
+          coverState.titleX = s.titleX ?? 0;
+          coverState.titleY = s.titleY ?? 35;
+          coverState.titleSizePct = s.titleSizePct ?? 10;
+          coverState.titleBg = s.titleBg || "light";
+        }
+
+        async function fileFromZip(path, outName){
+          const entry = zip.file(path);
+          if(!entry) return null;
+          const blob = await entry.async("blob");
+          return new File([blob], outName, { type: mimeFromName(outName) });
+        }
+
+        if(cfg.cover?.fileName){
+          const f = await fileFromZip("images/cover/"+cfg.cover.fileName, cfg.cover.fileName);
+          if(f) coverFile=f;
+        }
+
+        if(cfg.months){
+          for(let m=1;m<=12;m++){
+            const msCfg=cfg.months[m];
+            if(!msCfg) continue;
+
+            const bgName = msCfg.bgName;
+            if(bgName){
+              const f=await fileFromZip("images/backgrounds/"+bgName, bgName);
+              if(f) monthState[m].bgFile=f;
+            }
+
+            monthState[m].headerCount = clamp(parseInt(msCfg.headerCount??1,10)||1,1,4);
+
+            const names = msCfg.headerNames || [null,null,null,null];
+            const slots=[null,null,null,null];
+            for(let i=0;i<4;i++){
+              const name=names[i];
+              if(!name) continue;
+              const f=await fileFromZip("images/headers/"+name, name);
+              if(f) slots[i]=f;
+            }
+            monthState[m].headerFiles = slots;
+
+            const hadj = Array.isArray(msCfg.headerAdj) ? msCfg.headerAdj : [];
+            monthState[m].headerAdj = [
+              hadj[0]?{...DEFAULT_ADJ(),...hadj[0]}:DEFAULT_ADJ(),
+              hadj[1]?{...DEFAULT_ADJ(),...hadj[1]}:DEFAULT_ADJ(),
+              hadj[2]?{...DEFAULT_ADJ(),...hadj[2]}:DEFAULT_ADJ(),
+              hadj[3]?{...DEFAULT_ADJ(),...hadj[3]}:DEFAULT_ADJ(),
+            ];
+
+            monthState[m].headerFrameEnabled = Array.isArray(msCfg.headerFrameEnabled) ? msCfg.headerFrameEnabled.map(Boolean).slice(0,4) : [true,true,true,true];
+            while(monthState[m].headerFrameEnabled.length<4) monthState[m].headerFrameEnabled.push(true);
+
+            monthState[m].headerFrameStyle = Array.isArray(msCfg.headerFrameStyle) ? msCfg.headerFrameStyle.slice(0,4) : ["classic","classic","classic","classic"];
+            while(monthState[m].headerFrameStyle.length<4) monthState[m].headerFrameStyle.push("classic");
+
+            monthState[m].monthTitleX = typeof msCfg.monthTitleX==="number" ? msCfg.monthTitleX : 0;
+            monthState[m].monthTitleY = typeof msCfg.monthTitleY==="number" ? msCfg.monthTitleY : 0;
+
+            ensureMonthFix(m);
+          }
+        }
+
+        const dayNames = Array.isArray(cfg.dayPhotoNames) ? cfg.dayPhotoNames : [];
+        const dFiles=[];
+        for(const name of dayNames){
+          const f=await fileFromZip("images/days/"+name, name);
+          if(f) dFiles.push(f);
+        }
+        dayFiles=dFiles;
+
+        syncFontsUI();
+        updateKPI();
+        loadMonthToUI(clamp(parseInt(editMonthEl.value,10)||0, 0, 12));
+        setStatus("ZIP IMPORTADO ✅","ok");
+        requestPreviewRender(true);
+      }catch(err){
+        console.error(err);
+        setStatus("ERROR IMPORTANDO ZIP (F12).","err");
+      }
+    });
+
+    // ---------- DATA LOADERS (merge) ----------
+    function addBgFiles(files){
+      let count=0;
+      for(const f of files){
+        if(!f.type?.startsWith("image/")) continue;
+        const m = parseMonthFromBgName(f.name);
+        if(!m) continue;
+        monthState[m].bgFile = f;
+        count++;
+      }
+      return count;
+    }
+
+    function addHeaderFilesMerge(files){
+      let count=0;
+      const touched = new Set();
+      for(const f of files){
+        if(!f.type?.startsWith("image/")) continue;
+        const info = parseMonthAndIndexFromHeader(f.name);
+        if(!info) continue;
+        ensureMonthFix(info.month);
+        const ms = monthState[info.month];
+        const slot = clamp(info.idx-1,0,3);
+        ms.headerFiles[slot] = f;
+        touched.add(info.month);
+        count++;
+      }
+      for(const m of touched){
+        const ms = monthState[m];
+        const n = ms.headerFiles.filter(Boolean).length;
+        if((ms.headerCount||1)<=1 && n>1) ms.headerCount = clamp(n,1,4);
+      }
+      return count;
+    }
+
+    // ---------- EVENTS ----------
+    previewBtn.addEventListener("click", () => {
+      setStatus("GENERANDO VISTA PREVIA…","");
+      requestPreviewRender(true);
+      setTimeout(()=>setStatus("VISTA PREVIA LISTA.","ok"), 120);
+    });
+
+    coverUploadEl.addEventListener("change", (e)=>{
+      coverFile = e.target.files && e.target.files[0] ? e.target.files[0] : null;
+      bmpCache.clear();
+      setStatus(coverFile ? "PORTADA CARGADA." : "SIN PORTADA.", coverFile ? "ok" : "warn");
+      updateKPI(); requestPreviewRender(true);
+    });
+
+    bgUploadsEl.addEventListener("change", (e)=>{
+      const files = e.target.files ? [...e.target.files] : [];
+      const n = addBgFiles(files);
+      bmpCache.clear();
+      setStatus(`FONDOS PROCESADOS: ${n}.`, n ? "ok":"warn");
+      updateKPI(); requestPreviewRender();
+    });
+
+    headerUploadsEl.addEventListener("change", (e)=>{
+      const files = e.target.files ? [...e.target.files] : [];
+      const n = addHeaderFilesMerge(files);
+      bmpCache.clear();
+      setStatus(`CABECERAS PROCESADAS: ${n}.`, n ? "ok":"warn");
+      if(currentMonth!==0){
+        headerCountEl.value = String(monthState[currentMonth].headerCount||1);
+        syncHeaderFrameUI();
+      }
+      updateKPI(); requestPreviewRender(true);
+    });
+
+    dayInput.addEventListener("change", (e)=>{
+      const incoming = e.target.files ? [...e.target.files].filter(f=>f.type?.startsWith("image/")) : [];
+      const map = new Map(dayFiles.map(f=>[f.name,f]));
+      for(const f of incoming) map.set(f.name,f);
+      dayFiles = [...map.values()];
+      bmpCache.clear();
+      setStatus(`DIARIAS CARGADAS: ${dayFiles.length}.`, dayFiles.length ? "ok":"warn");
+      updateKPI(); requestPreviewRender();
+    });
+
+    extraHolidaysEl.addEventListener("input", ()=>requestPreviewRender());
+    modeEl.addEventListener("change", ()=>requestPreviewRender());
+    dayTwoModeEl.addEventListener("change", ()=>requestPreviewRender());
+    orientationEl.addEventListener("change", ()=>requestPreviewRender(true));
+    yearEl.addEventListener("change", ()=>{ updateKPI(); requestPreviewRender(true); });
+
+    editMonthEl.addEventListener("change", ()=>{
+      saveUIToCurrent();
+      loadMonthToUI(parseInt(editMonthEl.value,10));
+      requestPreviewRender(true);
+    });
+
+    headerCountEl.addEventListener("change", ()=>{ saveUIToCurrent(); updateKPI(); requestPreviewRender(true); });
+    editHeaderIndexEl.addEventListener("change", ()=>{ syncHeaderFrameUI(); syncAdjUI(); requestPreviewRender(true); });
+
+    headerFrameEnabledEl.addEventListener("change", commitHeaderFrameFromUI);
+    headerFrameStyleEl.addEventListener("change", commitHeaderFrameFromUI);
+
+    zoomEl.addEventListener("input", commitAdjFromUI);
+    rotEl.addEventListener("input", commitAdjFromUI);
+
+    resetOneBtn.addEventListener("click", ()=>{
+      if(currentMonth===0){
+        coverState.adj = DEFAULT_ADJ();
+        syncAdjUI(); requestPreviewRender(true); return;
+      }
+      ensureMonthFix(currentMonth);
+      const i=clamp(parseInt(editHeaderIndexEl.value,10)||0,0,3);
+      monthState[currentMonth].headerAdj[i]=DEFAULT_ADJ();
+      syncAdjUI(); requestPreviewRender(true);
+    });
+
+    resetAllBtn.addEventListener("click", ()=>{
+      if(currentMonth===0){
+        coverState.adj = DEFAULT_ADJ();
+        syncAdjUI(); requestPreviewRender(true); return;
+      }
+      ensureMonthFix(currentMonth);
+      monthState[currentMonth].headerAdj=[DEFAULT_ADJ(),DEFAULT_ADJ(),DEFAULT_ADJ(),DEFAULT_ADJ()];
+      syncAdjUI(); requestPreviewRender(true);
+    });
+
+    layerUpBtn.addEventListener("click", ()=>swapLayer(parseInt(editHeaderIndexEl.value,10)||0, (parseInt(editHeaderIndexEl.value,10)||0)+1));
+    layerDownBtn.addEventListener("click", ()=>swapLayer(parseInt(editHeaderIndexEl.value,10)||0, (parseInt(editHeaderIndexEl.value,10)||0)-1));
+
+    coverTitleEl.addEventListener("input", ()=>{ saveUIToCurrent(); requestPreviewRender(true); });
+    coverTitleSizeEl.addEventListener("input", ()=>{
+      coverTitleSizeVal.textContent=`${coverTitleSizeEl.value}%`;
+      saveUIToCurrent(); requestPreviewRender(true);
+    });
+    coverTitleBgEl.addEventListener("change", ()=>{ saveUIToCurrent(); requestPreviewRender(true); });
+
+    [coverTitleFontEl, monthTitleFontEl, weekdayFontEl, dayNumberFontEl, captionFontEl].forEach(el=>{
+      el.addEventListener("change", ()=>{ saveUIToCurrent(); requestPreviewRender(true); });
+    });
+
+    centerCoverTitleBtn.addEventListener("click", ()=>{
+      coverState.titleX = 0;
+      coverState.titleY = 35;
+      requestPreviewRender(true);
+      setStatus("TÍTULO CENTRADO.","ok");
+    });
+
+    resetCoverTitleBtn.addEventListener("click", ()=>{
+      coverState.title = "";
+      coverTitleEl.value = "";
+      coverState.titleX = 0;
+      coverState.titleY = 35;
+      coverState.titleSizePct = 10;
+      coverTitleSizeEl.value = 10;
+      coverTitleSizeVal.textContent = "10%";
+      coverState.titleBg = "light";
+      coverTitleBgEl.value = "light";
+      requestPreviewRender(true);
+      setStatus("TÍTULO RESETEADO.","ok");
+    });
+
+    // ---------- DRAG / HIT TEST ----------
+    function getCanvasPoint(e){
+      const rect=previewCanvas.getBoundingClientRect();
+      const x=(e.clientX-rect.left)*(previewCanvas.width/rect.width);
+      const y=(e.clientY-rect.top)*(previewCanvas.height/rect.height);
+      return {x,y};
+    }
+
+    function hitTest(x,y){
+      for(let k=hitItems.length-1; k>=0; k--){
+        const h=hitItems[k];
+        const cos=Math.cos(-h.rot), sin=Math.sin(-h.rot);
+        const dx=x-h.cx, dy=y-h.cy;
+        const lx=dx*cos - dy*sin;
+        const ly=dx*sin + dy*cos;
+        if(Math.abs(lx)<=h.w/2 && Math.abs(ly)<=h.h/2) return h;
+      }
+      return null;
+    }
+
+    function pctFromCenter(center, zone){
+      const tx=(center.x-zone.bx)/zone.bw;
+      const ty=(center.y-zone.by)/zone.bh;
+      return {
+        xPct: Math.round(clamp(tx,0,1)*200-100),
+        yPct: Math.round(clamp(ty,0,1)*200-100),
+      };
+    }
+
+    let drag=null;
+
+    previewCanvas.addEventListener("pointerdown", (e)=>{
+      previewCanvas.setPointerCapture(e.pointerId);
+      previewForceHits = true;
+
+      const p=getCanvasPoint(e);
+      const hit=hitTest(p.x,p.y);
+      if(!hit) return;
+
+      const isRotate=e.shiftKey;
+
+      if(hit.kind==="coverTitle"){
+        drag={ kind:"coverTitle", mode:"move", zone:hit.zone, centerOffset:{x:p.x-hit.cx,y:p.y-hit.cy} };
+        setStatus("MOVIENDO TÍTULO PORTADA…","ok");
+        return;
+      }
+
+      if(hit.kind==="monthTitle"){
+        drag={ kind:"monthTitle", mode:"move", zone:hit.zone, centerOffset:{x:p.x-hit.cx,y:p.y-hit.cy} };
+        setStatus("MOVIENDO TÍTULO MES…","ok");
+        return;
+      }
+
+      if(hit.kind==="coverImage"){
+        if(isRotate){
+          const startAngle=Math.atan2(p.y-hit.cy,p.x-hit.cx);
+          drag={ kind:"coverImage", mode:"rot", startAngle, startRotDeg:coverState.adj.rotDeg||0, cx:hit.cx, cy:hit.cy, zone:hit.zone };
+          setStatus("ROTANDO PORTADA (SHIFT)…","ok");
+        } else {
+          drag={ kind:"coverImage", mode:"move", zone:hit.zone, centerOffset:{x:p.x-hit.cx,y:p.y-hit.cy} };
+          setStatus("MOVIENDO PORTADA…","ok");
+        }
+        return;
+      }
+
+      if(hit.kind==="header"){
+        if(currentMonth===0) return;
+        ensureMonthFix(currentMonth);
+        editHeaderIndexEl.value=String(hit.i);
+        syncHeaderFrameUI();
+        syncAdjUI();
+
+        if(isRotate){
+          const startAngle=Math.atan2(p.y-hit.cy,p.x-hit.cx);
+          const startRotDeg=monthState[currentMonth].headerAdj[hit.i]?.rotDeg??0;
+          drag={ kind:"header", i:hit.i, mode:"rot", startAngle, startRotDeg, cx:hit.cx, cy:hit.cy, zone:hit.zone };
+          setStatus(`ROTANDO FOTO ${hit.i+1} (SHIFT)…`,"ok");
+        } else {
+          drag={ kind:"header", i:hit.i, mode:"move", zone:hit.zone, centerOffset:{x:p.x-hit.cx,y:p.y-hit.cy} };
+          setStatus(`MOVIENDO FOTO ${hit.i+1}…`,"ok");
+        }
+      }
+    }, {passive:true});
+
+    previewCanvas.addEventListener("pointermove", (e)=>{
+      if(!drag) return;
+      const p=getCanvasPoint(e);
+
+      if(drag.kind==="coverTitle"){
+        const newCenter={ x:p.x-drag.centerOffset.x, y:p.y-drag.centerOffset.y };
+        const pct=pctFromCenter(newCenter, drag.zone);
+        coverState.titleX=pct.xPct;
+        coverState.titleY=pct.yPct;
+        requestPreviewRender(true);
+        return;
+      }
+
+      if(drag.kind==="monthTitle"){
+        if(currentMonth===0) return;
+        ensureMonthFix(currentMonth);
+        const newCenter={ x:p.x-drag.centerOffset.x, y:p.y-drag.centerOffset.y };
+        const pct=pctFromCenter(newCenter, drag.zone);
+        monthState[currentMonth].monthTitleX = clamp(pct.xPct, -100, 100);
+        monthState[currentMonth].monthTitleY = clamp(pct.yPct, -100, 100);
+        requestPreviewRender(true);
+        return;
+      }
+
+      if(drag.kind==="coverImage"){
+        if(drag.mode==="move"){
+          const newCenter={ x:p.x-drag.centerOffset.x, y:p.y-drag.centerOffset.y };
+          const pct=pctFromCenter(newCenter, drag.zone);
+          coverState.adj.xPct=pct.xPct;
+          coverState.adj.yPct=pct.yPct;
+        } else {
+          const angle=Math.atan2(p.y-drag.cy,p.x-drag.cx);
+          const delta=(angle-drag.startAngle)*(180/Math.PI);
+          const newRot=clamp(Math.round(drag.startRotDeg+delta), -45, 45);
+          coverState.adj.rotDeg=newRot;
+          rotEl.value=newRot; rotVal.textContent=`${newRot}°`;
+        }
+        requestPreviewRender(true);
+        return;
+      }
+
+      if(drag.kind==="header"){
+        if(currentMonth===0) return;
+        ensureMonthFix(currentMonth);
+        const i=drag.i;
+        if(drag.mode==="move"){
+          const newCenter={ x:p.x-drag.centerOffset.x, y:p.y-drag.centerOffset.y };
+          const pct=pctFromCenter(newCenter, drag.zone);
+          monthState[currentMonth].headerAdj[i].xPct=pct.xPct;
+          monthState[currentMonth].headerAdj[i].yPct=pct.yPct;
+        } else {
+          const angle=Math.atan2(p.y-drag.cy,p.x-drag.cx);
+          const delta=(angle-drag.startAngle)*(180/Math.PI);
+          const newRot=clamp(Math.round(drag.startRotDeg+delta), -45, 45);
+          monthState[currentMonth].headerAdj[i].rotDeg=newRot;
+          rotEl.value=newRot; rotVal.textContent=`${newRot}°`;
+        }
+        requestPreviewRender(true);
+      }
+    }, {passive:true});
+
+    previewCanvas.addEventListener("pointerup", ()=>{ drag=null; setStatus("LISTO.","ok"); }, {passive:true});
+    previewCanvas.addEventListener("pointercancel", ()=>{ drag=null; setStatus("CANCELADO.","warn"); }, {passive:true});
+
+    previewCanvas.addEventListener("wheel", (e)=>{
+      if(!e.ctrlKey) return;
+      e.preventDefault();
+      if(currentMonth!==0) return;
+      const step=(e.deltaY>0)?-4:4;
+      const z=clamp((coverState.adj.zoomPct||100)+step, 10, 260);
+      coverState.adj.zoomPct=z;
+      zoomEl.value=z; zoomVal.textContent=`${z}%`;
+      requestPreviewRender(true);
+      setStatus("ZOOM PORTADA (CTRL+RUEDA).","ok");
+    }, {passive:false});
+
+    previewCanvas.addEventListener("dblclick", ()=>{
+      if(currentMonth!==0) return;
+      coverState.adj.xPct=0; coverState.adj.yPct=0;
+      requestPreviewRender(true);
+      setStatus("PORTADA CENTRADA.","ok");
+    }, {passive:true});
+
+    // ---------- DROP ----------
+    function wireDrop(el){
+      ["dragenter","dragover"].forEach(ev=>el.addEventListener(ev, (e)=>{ e.preventDefault(); e.stopPropagation(); el.classList.add("drag"); }, {passive:false}));
+      ["dragleave","drop"].forEach(ev=>el.addEventListener(ev, (e)=>{ e.preventDefault(); e.stopPropagation(); el.classList.remove("drag"); }, {passive:false}));
+
+      el.addEventListener("drop", (e)=>{
+        e.preventDefault(); e.stopPropagation();
+        const files = e.dataTransfer.files ? [...e.dataTransfer.files] : [];
+
+        const bgs = addBgFiles(files);
+        const hs = addHeaderFilesMerge(files);
+
+        let ds=0;
+        const dayMap=new Map(dayFiles.map(f=>[f.name,f]));
+        for(const f of files){
+          if(!f.type?.startsWith("image/")) continue;
+          const isBg = parseMonthFromBgName(f.name)!=null;
+          const isH = parseMonthAndIndexFromHeader(f.name)!=null;
+          if(!isBg && !isH){
+            if(!dayMap.has(f.name)) ds++;
+            dayMap.set(f.name,f);
+          }
+        }
+        dayFiles=[...dayMap.values()];
+
+        bmpCache.clear();
+        setStatus(`DROP: FONDOS ${bgs}, CABECERAS ${hs}, DIARIAS +${ds}.`, "ok");
+        if(currentMonth!==0) headerCountEl.value=String(monthState[currentMonth].headerCount||1);
+        updateKPI();
+        requestPreviewRender(true);
+      }, {passive:false});
+    }
+    wireDrop(dropAll);
+
+    // ---------- INIT ----------
+    syncFontsUI();
+    loadMonthToUI(0);
+    setStatus("LISTO.","ok");
+    requestPreviewRender(true);
+
+    let resizePending=false;
+    window.addEventListener("resize", ()=>{
+      if(resizePending) return;
+      resizePending=true;
+      requestAnimationFrame(()=>{ resizePending=false; requestPreviewRender(true); });
+    }, {passive:true});
+  });
+  </script>
+</body>
+</html>
