@@ -3,188 +3,83 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-
   <title>Calendario con fotos personalizado | Crea tu calendario online gratis</title>
-  <meta name="description" content="Crea gratis un calendario con fotos personalizado: añade una foto por día, portada y cabeceras mensuales. Descarga el PDF A3 listo para imprimir, sin registro."/>
+  <meta name="description" content="Crea gratis un calendario con fotos personalizado: una foto por día, portada y cabeceras mensuales. Descarga el PDF A3 listo para imprimir, sin registro."/>
   <meta name="robots" content="index,follow"/>
   <link rel="canonical" href="https://calendariopersonalizado.es/calendario-con-fotos"/>
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Calendario con fotos personalizado (online y gratis)"/>
-  <meta property="og:description" content="Generador online para crear un calendario con fotos: una foto por día, portada y cabeceras. Descarga en PDF A3 listo para imprimir."/>
-  <meta property="og:type" content="website"/>
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary"/>
-  <meta name="twitter:title" content="Calendario con fotos personalizado (online y gratis)"/>
-  <meta name="twitter:description" content="Crea tu calendario con fotos y descarga el PDF A3 listo para imprimir. Sin registro."/>
-
-  <!-- FAQ Schema (elige respuestas cortas y directas, útil para AI Search) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "¿Cómo crear un calendario con fotos personalizado?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sube tus fotos, elige el año y configura portada y cabeceras. Puedes asignar una foto distinta a cada día y descargar el calendario en PDF listo para imprimir."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Puedo poner una foto por día?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sí. Puedes usar una foto distinta para cada día. La forma más cómoda es nombrar las imágenes con la fecha (por ejemplo 1221 o 20261221) para que se asignen automáticamente."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Se puede descargar el calendario en PDF para imprimir?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sí. El generador crea un PDF en A3 (vertical u horizontal) listo para imprimir en casa o en copistería."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Es gratis y sin registro?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sí. Puedes crear tu calendario con fotos de forma gratuita y sin registrarte."
-        }
-      }
-    ]
-  }
-  </script>
+      <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-N2V5QVSH');</script>
+  <!-- End Google Tag Manager -->
 
   <style>
-    :root { color-scheme: light; }
-    body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; margin:0; line-height:1.5; }
-    header { padding: 16px; border-bottom: 1px solid #e6e6e6; }
-    header nav { display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
-    header a { color: inherit; text-decoration:none; }
-    header a:hover { text-decoration: underline; }
-    main { max-width: 920px; margin: 0 auto; padding: 22px 16px 40px; }
-    .hero { padding: 14px 0 10px; }
-    .hero p { margin-top: 8px; color:#333; }
-    .cta { display:flex; gap:10px; flex-wrap:wrap; margin: 14px 0 4px; }
-    .btn { display:inline-block; padding:10px 14px; border-radius:10px; border:1px solid #111; text-decoration:none; }
-    .btn.primary { background:#111; color:#fff; }
-    .btn.secondary { background:#fff; color:#111; }
-    section { margin-top: 22px; }
-    ul,ol { padding-left: 18px; }
-    .note { font-size: 0.95rem; color:#444; }
-    .faq details { border:1px solid #e6e6e6; border-radius:12px; padding:12px 14px; margin:10px 0; }
-    footer { border-top:1px solid #e6e6e6; padding: 18px 16px; }
-    footer nav { max-width:920px; margin:0 auto; display:flex; gap:14px; flex-wrap:wrap; }
+    :root{--bg:#0b0c10;--card:#12141b;--text:#eaeef7;--muted:#a8b0c2;--line:#2a2f3d;}
+    *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    .wrap{max-width:980px;margin:0 auto;padding:24px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
+    a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+    h1{margin:0 0 10px;font-size:clamp(1.5rem,2.4vw,2rem)}
+    h2{margin:18px 0 10px;font-size:1.2rem}
+    p,li{color:var(--muted);line-height:1.55}
+    .top{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+    .btn{display:inline-block;background:#eaeef7;color:#0b0c10;padding:10px 12px;border-radius:12px;font-weight:900;text-decoration:none}
+    .btn.secondary{background:#bfc7da}
+    .hr{border:0;border-top:1px solid var(--line);margin:14px 0}
   </style>
 </head>
-
 <body>
-  <header>
-    <nav aria-label="Navegación principal">
-      <a href="/">Inicio</a>
-      <a href="/calendario-anual-pdf-imprimir">Calendario anual PDF</a>
-      <a href="/calendario-a3-personalizado">Calendario A3</a>
-      <a href="/como-funciona">Cómo funciona</a>
-      <a href="/faq">FAQ</a>
-    </nav>
-  </header>
 
-  <main>
-    <div class="hero">
-      <h1>Calendario con fotos personalizado (online y gratis)</h1>
-      <p>
-        Crea un <strong>calendario con fotos</strong> con una imagen distinta por día, añade portada y cabeceras mensuales,
-        y descarga el <strong>PDF A3 listo para imprimir</strong>. Sin registro.
-      </p>
-
-      <div class="cta">
-        <a class="btn primary" href="/">Abrir el generador</a>
-        <a class="btn secondary" href="/como-funciona">Ver cómo funciona</a>
-      </div>
-
-      <p class="note">
-        Consejo: si nombras tus fotos con la fecha (por ejemplo <code>1221</code> o <code>20261221</code>),
-        el generador puede asignarlas automáticamente al día correspondiente.
-      </p>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N2V5QVSH"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <div class="wrap">
+    <div class="top">
+      <a class="btn" href="./index.html#app">CREAR CALENDARIO CON FOTOS</a>
+      <a class="btn secondary" href="./como-funciona.html">CÓMO FUNCIONA</a>
+      <a class="btn secondary" href="./faq.html">FAQ</a>
     </div>
 
-    <section aria-labelledby="h2-que-incluye">
-      <h2 id="h2-que-incluye">Qué incluye tu calendario con fotos</h2>
-      <ul>
-        <li>Una foto distinta por día (opcional, pero es lo más popular).</li>
-        <li>Portada (imagen + título) y cabeceras por mes.</li>
-        <li>Formato PDF en A3 (vertical u horizontal), listo para imprimir.</li>
-        <li>Exportación/importación en ZIP para reutilizar el proyecto.</li>
-      </ul>
-    </section>
+        <section class="card">
+      <h1>Calendario con fotos personalizado (online y gratis)</h1>
+      <p>
+        Crea un <strong>calendario con fotos</strong> añadiendo una imagen distinta a cada día, con portada y cabeceras mensuales.
+        Descarga el <strong>PDF A3 listo para imprimir</strong> sin registro.
+      </p>
 
-    <section aria-labelledby="h2-pasos">
-      <h2 id="h2-pasos">Cómo crear tu calendario con fotos (paso a paso)</h2>
+      <h2>Qué incluye</h2>
+      <ul>
+        <li>Una foto diferente por día (opcional) con asignación automática por nombre de archivo.</li>
+        <li>Portada con título (opcional) y fondos por mes (opcional).</li>
+        <li>Cabeceras por mes (hasta 4 por mes) con opciones de posición, zoom y rotación.</li>
+        <li>Exportar e importar un ZIP con configuración e imágenes para reutilizar el proyecto.</li>
+        <li>Salida en PDF A3 (vertical u horizontal) lista para imprimir.</li>
+      </ul>
+
+      <h2>Cómo crear tu calendario con fotos (paso a paso)</h2>
       <ol>
-        <li>Elige el año y el mes.</li>
-        <li>Sube una imagen de portada (opcional) y escribe un título.</li>
+        <li>Abre el generador.</li>
+        <li>Sube tu portada (opcional) y escribe un título.</li>
         <li>Sube cabeceras mensuales: por ejemplo <code>ENERO1</code>, <code>ENERO2</code>… (hasta 4 por mes).</li>
-        <li>Sube tus fotos diarias y revisa la vista previa.</li>
-        <li>Descarga el PDF en A3 para imprimir.</li>
+        <li>Sube tus fotos diarias y nómbralas con la fecha para asignación automática: <code>1221</code> o <code>20261221</code>.</li>
+        <li>Revisa la vista previa y descarga el PDF A3 listo para imprimir.</li>
       </ol>
-    </section>
 
-    <section aria-labelledby="h2-imprimir">
-      <h2 id="h2-imprimir">Imprimir tu calendario: recomendaciones rápidas</h2>
+      <h2>Consejos rápidos para imprimir</h2>
       <ul>
-        <li>Al imprimir, usa “tamaño real” o “escala 100%”.</li>
-        <li>Para mejor resultado: papel de 170–250 g si vas a encuadernar.</li>
-        <li>Si lo imprimes en copistería, pide “A3 a color” y encuadernación/espiral si lo prefieres.</li>
+        <li>Usa “tamaño real” o “escala 100%” al imprimir para respetar márgenes.</li>
+        <li>Para mejor resultado: papel de 170–250 g si vas a encuadernar/espiral.</li>
+        <li>En copistería: pide “A3 a color” y, si quieres, encuadernación.</li>
       </ul>
+
+      <hr class="hr"/>
+
+      <p><a href="./index.html#app">Ir al generador de calendario con fotos</a></p>
+      <p><a href="./faq.html">Ver preguntas frecuentes</a> · <a href="./como-funciona.html">Cómo funciona</a></p>
     </section>
-
-    <section class="faq" aria-labelledby="h2-faq">
-      <h2 id="h2-faq">Preguntas frecuentes</h2>
-
-      <details>
-        <summary><strong>¿Cómo crear un calendario con fotos personalizado?</strong></summary>
-        <p>Sube tus fotos, elige el año y configura portada y cabeceras. Puedes asignar una foto por día y descargar el PDF listo para imprimir.</p>
-      </details>
-
-      <details>
-        <summary><strong>¿Puedo usar una foto por día?</strong></summary>
-        <p>Sí. Lo más cómodo es nombrar las imágenes con la fecha (por ejemplo 1221 o 20261221) para asignación automática.</p>
-      </details>
-
-      <details>
-        <summary><strong>¿Se puede descargar en PDF para imprimir?</strong></summary>
-        <p>Sí. El PDF se genera en A3 (vertical u horizontal) listo para imprimir.</p>
-      </details>
-
-      <details>
-        <summary><strong>¿Es gratis y sin registro?</strong></summary>
-        <p>Sí, puedes crear tu calendario con fotos de forma gratuita y sin registrarte.</p>
-      </details>
-
-      <p class="note">Si quieres más dudas, mira la página de <a href="/faq">preguntas frecuentes</a>.</p>
-    </section>
-
-    <section aria-labelledby="h2-relacionadas">
-      <h2 id="h2-relacionadas">Páginas relacionadas</h2>
-      <ul>
-        <li><a href="/calendario-anual-pdf-imprimir">Calendario anual en PDF para imprimir</a></li>
-        <li><a href="/calendario-a3-personalizado">Calendario A3 personalizado</a></li>
-      </ul>
-    </section>
-  </main>
-
-  <footer>
-    <nav aria-label="Enlaces del sitio">
-      <a href="/sobre">Sobre</a>
-      <a href="/privacidad">Privacidad</a>
-      <a href="/contacto">Contacto</a>
-    </nav>
-  </footer>
+  </div>
 </body>
 </html>
