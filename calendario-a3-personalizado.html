@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Calendario A3 personalizado | PDF listo para imprimir</title>
+  <title>Calendario A3 personalizado (PDF para imprimir) | Vertical u horizontal</title>
   <meta name="description" content="Crea tu calendario A3 personalizado y descárgalo en PDF listo para imprimir. Portada, cabeceras por mes y fotos por día (opcional). Gratis y online."/>
   <meta name="robots" content="index,follow"/>
   <link rel="canonical" href="https://calendariopersonalizado.es/calendario-a3-personalizado"/>
@@ -42,33 +42,95 @@
   border:0 !important;
 }
 
-/* Improved tap targets for internal calendar links */
-.card a[href="/calendario-con-fotos"],
-.card a[href="/calendario-anual-pdf-imprimir"],
-.card a[href="/calendario-a3-personalizado"],
-.card a[href^="/calendario-"]{
-  display:inline-flex;
-  align-items:center;
-  min-height:44px;
-  padding:0.35rem 0.25rem;
-}
+/* SEO/UX blocks */
+.answer-first ul{ margin: 0.5rem 0 0; padding-left: 1.2rem; }
+.faq-block details{ padding: 0.5rem 0; border-top: 1px solid rgba(255,255,255,0.08); }
+.faq-block details:last-child{ border-bottom: 1px solid rgba(255,255,255,0.08); }
+.faq-block summary{ cursor: pointer; font-weight: 600; }
+.related ul{ padding-left: 1.2rem; }
 
-/* Extra spacing to avoid overlapping tap areas */
-.card ul li,
-.card ol li{
-  margin:0.25rem 0;
-}
+.quick-howto ol{ padding-left: 1.2rem; margin: 0.5rem 0 0; }
+.quick-howto .note{ margin-top: 0.5rem; opacity: 0.95; }
+.quick-howto code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 0.95em; }
 
+/* Card content fixes */
+/* Layout fixes for card content (prevent paragraph padding/margins from breaking cards) */
+.card p{
+  max-width: none;
+  margin: 0 0 12px 0;
+  padding: 0;
+}
+.card p:last-child{ margin-bottom: 0; }
+.card ul, .card ol{
+  max-width: none;
+  margin: 8px 0 12px 0;
+  padding-left: 1.2rem;
+}
+.card li{ margin: 6px 0; }
+
+/* Keep internal links comfortably tappable inside cards */
+.card a:not(.btn){
+  min-height: 44px;
+  padding: 0.35rem 0.25rem;
+  display: inline-flex;
+  align-items: center;
+}
 @media (pointer: coarse){
-  .card a[href="/calendario-con-fotos"],
-  .card a[href="/calendario-anual-pdf-imprimir"],
-  .card a[href="/calendario-a3-personalizado"],
-  .card a[href^="/calendario-"]{
-    min-height:48px;
-    padding:0.5rem 0.35rem;
+  .card a:not(.btn){
+    min-height: 48px;
+    padding: 0.5rem 0.35rem;
   }
 }
 </style>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿A3 vertical o apaisado: cuál elijo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Vertical si quieres más altura para fotos y notas. Apaisado si prefieres una composición más panorámica."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo lo pido en copistería?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pide “impresión A3 a color”, escala 100% y el tipo de papel. Si quieres, añade encuadernación."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué papel recomiendas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Para un buen resultado, 170–250 g. Si es para pared, puedes plastificar o laminar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿El PDF está listo para imprimir?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Exporta y revisa una página de prueba a escala 100%."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo usarlo como regalo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Añade portada y fotos para un calendario personal y listo para regalar."
+      }
+    }
+  ]
+}
+  </script>
 </head>
 <body>
 
@@ -84,7 +146,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <section class="card">
-      <h1>Calendario A3 personalizado en PDF</h1>
+      <h1>Calendario A3 personalizado</h1>
+<section class="card answer-first" id="resumen">
+  <p><strong>Crea tu calendario A3 personalizado y descárgalo en PDF listo para imprimir.</strong></p>
+  <ul>
+      <li>A3 vertical u horizontal</li>
+      <li>Portada y cabeceras (opcional)</li>
+      <li>Fotos opcionales</li>
+      <li>Listo para copistería</li>
+  </ul>
+  <p><a class="btn primary" href="/#app">Crear calendario ahora</a> <a class="btn secondary" href="/como-funciona">Ver cómo funciona</a></p>
+</section>
+<section class="card quick-howto" id="como-usar-20-segundos">
+  <h2>Cómo se usa en 20 segundos</h2>
+  <ol>
+    <li><strong>Elige el año y el formato</strong> (A3 vertical u horizontal).</li>
+    <li><strong>Añade tus fotos</strong> (opcional): portada, cabeceras o fotos por día.</li>
+    <li><strong>Descarga el PDF</strong> listo para imprimir.</li>
+  </ol>
+  <p class="note"><strong>Tip:</strong> si quieres asignación automática por día, nombra las fotos como <code>0101.jpg</code> (1 de enero) o <code>20260101.png</code>.</p>
+  <p><a class="btn primary" href="/#app">Abrir el generador</a></p>
+</section>
+
+<div class="card">
+  <p id="enlaces-contexto">Si buscas un año completo en PDF, mira el <a href="/calendario-anual-pdf-imprimir">calendario anual en PDF para imprimir</a>. Si quieres destacar fotos, crea un <a href="/calendario-con-fotos">calendario con fotos personalizado</a>.</p>
+</div>
+
       <p>Esta página está enfocada a la búsqueda “calendario A3 personalizado”. La herramienta genera un PDF A3 listo para imprimir, con portada, cabeceras mensuales y fotos por día.</p>
 
       <h2>Qué incluye</h2>
@@ -110,3 +197,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </body>
 </html>
+
+<section class="card faq-block" id="preguntas-frecuentes">
+  <h2>Preguntas frecuentes</h2>
+
+  <details class="faq-item">
+    <summary>¿A3 vertical o apaisado: cuál elijo?</summary>
+    <p>Vertical si quieres más altura para fotos y notas. Apaisado si prefieres una composición más panorámica.</p>
+  </details>
+
+  <details class="faq-item">
+    <summary>¿Cómo lo pido en copistería?</summary>
+    <p>Pide “impresión A3 a color”, escala 100% y el tipo de papel. Si quieres, añade encuadernación.</p>
+  </details>
+
+  <details class="faq-item">
+    <summary>¿Qué papel recomiendas?</summary>
+    <p>Para un buen resultado, 170–250 g. Si es para pared, puedes plastificar o laminar.</p>
+  </details>
+
+  <details class="faq-item">
+    <summary>¿El PDF está listo para imprimir?</summary>
+    <p>Sí. Exporta y revisa una página de prueba a escala 100%.</p>
+  </details>
+
+  <details class="faq-item">
+    <summary>¿Puedo usarlo como regalo?</summary>
+    <p>Sí. Añade portada y fotos para un calendario personal y listo para regalar.</p>
+  </details>
+</section>
+<section class="card" id="en-resumen">
+  <h2>En resumen</h2>
+  <ul>
+    <li><strong>Qué es:</strong> Crea tu calendario A3 personalizado y descárgalo en PDF listo para imprimir.</li>
+    <li><strong>Qué obtienes:</strong> un PDF A3 listo para imprimir.</li>
+    <li><strong>Cómo empezar:</strong> abre el generador y ajusta el calendario en minutos.</li>
+  </ul>
+  <p><a class="btn primary" href="/#app">Crear calendario ahora</a></p>
+</section>
+<section class="card related">
+  <h2>Relacionado</h2>
+  <ul>
+    <li><a href="/calendario-con-fotos">Calendario con fotos personalizado</a></li>
+    <li><a href="/calendario-anual-pdf-imprimir">Calendario anual en PDF para imprimir</a></li>
+    <li><a href="/calendario-a3-personalizado">Calendario A3 personalizado</a></li>
+    <li><a href="/como-funciona">Cómo funciona</a></li>
+    <li><a href="/faq">FAQ</a></li>
+  </ul>
+</section>

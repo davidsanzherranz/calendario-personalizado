@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Cómo crear un calendario personalizado | Guía paso a paso</title>
+  <title>Cómo crear un calendario personalizado (paso a paso) | PDF A3</title>
   <meta name="description" content="Guía paso a paso para crear un calendario personalizado online: portada, cabeceras por mes, fotos por día y descarga en PDF A3 listo para imprimir."/>
   <meta name="robots" content="index,follow"/>
   <link rel="canonical" href="https://calendariopersonalizado.es/como-funciona"/>
@@ -48,30 +48,39 @@
   border:0 !important;
 }
 
-/* Improved tap targets for internal calendar links */
-.card a[href="/calendario-con-fotos"],
-.card a[href="/calendario-anual-pdf-imprimir"],
-.card a[href="/calendario-a3-personalizado"],
-.card a[href^="/calendario-"]{
-  display:inline-flex;
-  align-items:center;
-  min-height:44px;
-  padding:0.35rem 0.25rem;
-}
+/* SEO/UX blocks */
+.answer-first ul{ margin: 0.5rem 0 0; padding-left: 1.2rem; }
+.faq-block details{ padding: 0.5rem 0; border-top: 1px solid rgba(255,255,255,0.08); }
+.faq-block details:last-child{ border-bottom: 1px solid rgba(255,255,255,0.08); }
+.faq-block summary{ cursor: pointer; font-weight: 600; }
+.related ul{ padding-left: 1.2rem; }
 
-/* Extra spacing to avoid overlapping tap areas */
-.card ul li,
-.card ol li{
-  margin:0.25rem 0;
+/* Card content fixes */
+/* Layout fixes for card content (prevent paragraph padding/margins from breaking cards) */
+.card p{
+  max-width: none;
+  margin: 0 0 12px 0;
+  padding: 0;
 }
+.card p:last-child{ margin-bottom: 0; }
+.card ul, .card ol{
+  max-width: none;
+  margin: 8px 0 12px 0;
+  padding-left: 1.2rem;
+}
+.card li{ margin: 6px 0; }
 
+/* Keep internal links comfortably tappable inside cards */
+.card a:not(.btn){
+  min-height: 44px;
+  padding: 0.35rem 0.25rem;
+  display: inline-flex;
+  align-items: center;
+}
 @media (pointer: coarse){
-  .card a[href="/calendario-con-fotos"],
-  .card a[href="/calendario-anual-pdf-imprimir"],
-  .card a[href="/calendario-a3-personalizado"],
-  .card a[href^="/calendario-"]{
-    min-height:48px;
-    padding:0.5rem 0.35rem;
+  .card a:not(.btn){
+    min-height: 48px;
+    padding: 0.5rem 0.35rem;
   }
 }
 </style>
@@ -111,7 +120,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <section class="card">
-      <h1>Cómo crear un calendario personalizado (paso a paso)</h1>
+      <h1>Cómo funciona el generador de calendario</h1>
+<section class="card answer-first" id="resumen">
+  <p><strong>Guía paso a paso para crear un calendario personalizado con o sin fotos y descargarlo en PDF A3.</strong></p>
+  <p><a class="btn primary" href="/#app">Ir al generador</a> <a class="btn secondary" href="/calendario-con-fotos">Ver calendario con fotos</a></p>
+</section>
+
       <p>Esta guía resume el flujo recomendado para crear un calendario en PDF listo para imprimir. Si quieres empezar directamente, usa el botón “Ir al generador”.</p>
 
       <h2>1) Portada</h2>
@@ -161,3 +175,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </body>
 </html>
+
+<section class="card related">
+  <h2>Relacionado</h2>
+  <ul>
+    <li><a href="/calendario-con-fotos">Calendario con fotos personalizado</a></li>
+    <li><a href="/calendario-anual-pdf-imprimir">Calendario anual en PDF para imprimir</a></li>
+    <li><a href="/calendario-a3-personalizado">Calendario A3 personalizado</a></li>
+    <li><a href="/como-funciona">Cómo funciona</a></li>
+    <li><a href="/faq">FAQ</a></li>
+  </ul>
+</section>
