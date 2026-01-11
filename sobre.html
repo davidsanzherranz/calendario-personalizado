@@ -38,6 +38,33 @@
   white-space:nowrap !important;
   border:0 !important;
 }
+
+/* Improved tap targets for internal calendar links */
+.card a[href="/calendario-con-fotos"],
+.card a[href="/calendario-anual-pdf-imprimir"],
+.card a[href="/calendario-a3-personalizado"],
+.card a[href^="/calendario-"]{
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
+  padding:0.35rem 0.25rem;
+}
+
+/* Extra spacing to avoid overlapping tap areas */
+.card ul li,
+.card ol li{
+  margin:0.25rem 0;
+}
+
+@media (pointer: coarse){
+  .card a[href="/calendario-con-fotos"],
+  .card a[href="/calendario-anual-pdf-imprimir"],
+  .card a[href="/calendario-a3-personalizado"],
+  .card a[href^="/calendario-"]{
+    min-height:48px;
+    padding:0.5rem 0.35rem;
+  }
+}
 </style>
 </head>
 <body>
