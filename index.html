@@ -107,7 +107,31 @@
     @media (max-width: 980px){ .linkGrid{ grid-template-columns: 1fr; } }
     .linkCard{ border:1px solid var(--line); border-radius:14px; padding:12px; background:#0f1118; }
     .linkCard p{ margin:6px 0 0; color:var(--muted); }
-  </style>
+
+/* Screen-reader only utility */
+.sr-only{
+  position:absolute !important;
+  width:1px !important;
+  height:1px !important;
+  padding:0 !important;
+  margin:-1px !important;
+  overflow:hidden !important;
+  clip:rect(0,0,0,0) !important;
+  white-space:nowrap !important;
+  border:0 !important;
+}
+
+/* Bigger tap targets in navigation (mobile friendly) */
+.site-nav a{
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
+  padding:0.5rem 0.75rem;
+}
+@media (pointer: coarse){
+  .site-nav a{ min-height:48px; }
+}
+</style>
 
   <!-- Schema (SoftwareApplication + HowTo + FAQPage) -->
   <script type="application/ld+json">
@@ -345,7 +369,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </select>
 
         <label>SI HAY 2 FOTOS EL MISMO DÍA</label>
-        <select id="dayTwoMode">
+        <label for="dayTwoMode" class="sr-only">Distribución de días del calendario</label>
+      <select id="dayTwoMode">
           <option value="auto">AUTO</option>
           <option value="vertical">VERTICAL (LADO A LADO)</option>
           <option value="horizontal">HORIZONTAL (UNA ENCIMA DE OTRA)</option>
