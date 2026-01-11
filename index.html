@@ -1,4 +1,3 @@
-calendario_seo
 <!doctype html>
 <html lang="es">
 <head>
@@ -6,20 +5,20 @@ calendario_seo
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
 
   <!-- SEO base (neutro, tool-first) -->
-  <title>Crear calendario personalizado gratis en PDF | CalendarioPersonalizado.es</title>
-  <meta name="description" content="Crea un calendario personalizado gratis en PDF (A3) con fotos por día, portada y cabeceras mensuales. Sin registro y listo para imprimir."/>
+  <title>Calendario personalizado online gratis | PDF A3 para imprimir con fotos</title>
+  <meta name="description" content="Crea gratis tu calendario personalizado online: añade fotos por día, portada y cabeceras mensuales. Descarga el PDF A3 listo para imprimir, sin registro."/>
   <meta name="robots" content="index,follow"/>
-  <link rel="canonical" href="./"/>
+  <link rel="canonical" href="https://calendariopersonalizado.es/"/>
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Crear calendario personalizado gratis en PDF"/>
-  <meta property="og:description" content="Generador online para crear un calendario A3 con fotos por día, portada y cabeceras mensuales. Sin registro y listo para imprimir."/>
+  <meta property="og:title" content="Calendario personalizado online gratis (PDF A3 para imprimir)"/>
+  <meta property="og:description" content="Generador online para crear un calendario A3 con fotos por día, portada y cabeceras mensuales. Descarga en PDF listo para imprimir, sin registro."/>
   <meta property="og:type" content="website"/>
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary"/>
-  <meta name="twitter:title" content="Crear calendario personalizado gratis en PDF"/>
-  <meta name="twitter:description" content="Generador online para crear un calendario A3 con fotos por día, portada y cabeceras mensuales. Sin registro y listo para imprimir."/>
+  <meta name="twitter:title" content="Calendario personalizado online gratis (PDF A3 para imprimir)"/>
+  <meta name="twitter:description" content="Crea tu calendario personalizado con fotos y descarga el PDF A3 listo para imprimir. Sin registro."/>
 
     <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -150,10 +149,52 @@ calendario_seo
     ]
   }
   </script>
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="dns-prefetch" href="//www.googletagmanager.com">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <script>
+    // Lazy-load heavy libs only when needed (improves TBT / unused JS in Lighthouse)
+    let __jspdfPromise = null;
+    let __jszipPromise = null;
+
+    function loadJsPdf() {
+      if (__jspdfPromise) return __jspdfPromise;
+      __jspdfPromise = new Promise((resolve, reject) => {
+        const s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js';
+        s.async = true;
+        s.onload = () => resolve();
+        s.onerror = () => reject(new Error('Failed to load jsPDF'));
+        document.head.appendChild(s);
+      });
+      return __jspdfPromise;
+    }
+
+    function loadJsZip() {
+      if (__jszipPromise) return __jszipPromise;
+      __jszipPromise = new Promise((resolve, reject) => {
+        const s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js';
+        s.async = true;
+        s.onload = () => resolve();
+        s.onerror = () => reject(new Error('Failed to load JSZip'));
+        document.head.appendChild(s);
+      });
+      return __jszipPromise;
+    }
+  </script>
 </head>
 
 <body>
-  <!-- Google Tag Manager (noscript) -->
+  <nav class="site-nav" aria-label="Navegación">
+    <a href="/calendario-con-fotos">Calendario con fotos</a>
+    <a href="/calendario-anual-pdf-imprimir">Calendario anual PDF</a>
+    <a href="/calendario-a3-personalizado">Calendario A3</a>
+    <a href="/como-funciona">Cómo funciona</a>
+    <a href="/faq">FAQ</a>
+  </nav>
+<!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N2V5QVSH"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
@@ -161,7 +202,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- HOME HERO (SEO + UX) -->
     <section class="hero" aria-label="Crear calendario personalizado gratis en PDF">
       <div>
-        <h1>Crear calendario personalizado gratis en PDF</h1>
+        <h1>Calendario personalizado online gratis (PDF para imprimir)</h1>
         <p>
           Generador online para crear un calendario A3 con fotos por día, portada y cabeceras mensuales.
           Sin registro y listo para imprimir.
@@ -380,7 +421,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </p>
         </div>
       </aside>
-    </main>
+    <section class="card" id="paginas-principales">
+  <h2>Páginas principales</h2>
+  <ul>
+    <li><a href="/calendario-con-fotos">Calendario con fotos personalizado</a></li>
+    <li><a href="/calendario-anual-pdf-imprimir">Calendario anual en PDF para imprimir</a></li>
+    <li><a href="/calendario-a3-personalizado">Calendario A3 personalizado</a></li>
+  </ul>
+</section>
+<section class="card" id="para-quien">
+  <h2>Para quién es este calendario</h2>
+  <ul>
+    <li><strong>Regalo:</strong> un calendario con tus fotos para familia o pareja.</li>
+    <li><strong>Hogar:</strong> organiza el año y decora con recuerdos.</li>
+    <li><strong>Escuela:</strong> calendario escolar y eventos importantes.</li>
+    <li><strong>Empresa:</strong> calendario corporativo y planificación.</li>
+  </ul>
+</section>
+</main>
 
     <!-- SEO + IA: BLOQUES BAJO LA APP -->
     <section class="section card" aria-label="Qué hace esta herramienta">
@@ -469,10 +527,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <!-- libs defer -->
-  <script defer src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
-
-  <!-- APP JS (igual que la versión optimizada; con CTA scroll a la app) -->
+<!-- APP JS (igual que la versión optimizada; con CTA scroll a la app) -->
   <script defer>
   window.addEventListener("DOMContentLoaded", () => {
     const $ = (id) => document.getElementById(id);
@@ -1520,7 +1575,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         await renderMonth(pdfCanvas, W, H, currentMonth, false);
 
-        const { jsPDF } = window.jspdf;
+        const await loadJsPdf();
+        { jsPDF } = window.jspdf;
         const orientation=orientationEl.value;
         const pw=(orientation==="landscape")?420:297;
         const ph=(orientation==="landscape")?297:420;
@@ -1538,7 +1594,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         if(!coverFile){ setStatus("FALTA PORTADA.","err"); return; }
 
         setStatus("GENERANDO PDF ANUAL…","");
-        const { jsPDF } = window.jspdf;
+        const await loadJsPdf();
+        { jsPDF } = window.jspdf;
         const orientation=orientationEl.value;
         const pw=(orientation==="landscape")?420:297;
         const ph=(orientation==="landscape")?297:420;
@@ -1608,6 +1665,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         if(!window.JSZip){ setStatus("NO SE CARGÓ JSZIP (REVISA INTERNET/CDN).","err"); return; }
 
+        await loadJsZip();
         const zip=new JSZip();
         const config={
           version: 5,
