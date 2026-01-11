@@ -43,6 +43,33 @@
   white-space:nowrap !important;
   border:0 !important;
 }
+
+/* Improved tap targets for internal calendar links */
+.card a[href="/calendario-con-fotos"],
+.card a[href="/calendario-anual-pdf-imprimir"],
+.card a[href="/calendario-a3-personalizado"],
+.card a[href^="/calendario-"]{
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
+  padding:0.35rem 0.25rem;
+}
+
+/* Extra spacing to avoid overlapping tap areas */
+.card ul li,
+.card ol li{
+  margin:0.25rem 0;
+}
+
+@media (pointer: coarse){
+  .card a[href="/calendario-con-fotos"],
+  .card a[href="/calendario-anual-pdf-imprimir"],
+  .card a[href="/calendario-a3-personalizado"],
+  .card a[href^="/calendario-"]{
+    min-height:48px;
+    padding:0.5rem 0.35rem;
+  }
+}
 </style>
 </head>
 <body>
@@ -76,14 +103,3 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </body>
 </html>
-
-<section class="card related">
-  <h2>Relacionado</h2>
-  <ul>
-    <li><a href="/calendario-con-fotos">Calendario con fotos personalizado</a></li>
-    <li><a href="/calendario-anual-pdf-imprimir">Calendario anual en PDF para imprimir</a></li>
-    <li><a href="/calendario-a3-personalizado">Calendario A3 personalizado</a></li>
-    <li><a href="/como-funciona">Cómo funciona</a></li>
-    <li><a href="/faq">FAQ</a></li>
-  </ul>
-</section>

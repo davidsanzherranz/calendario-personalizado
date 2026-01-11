@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
 
   <!-- SEO base (neutro, tool-first) -->
-  <title>Calendario personalizado (PDF A3 para imprimir) | Generador online gratis</title>
+  <title>Calendario personalizado online gratis | PDF A3 para imprimir con fotos</title>
   <meta name="description" content="Crea gratis tu calendario personalizado online: añade fotos por día, portada y cabeceras mensuales. Descarga el PDF A3 listo para imprimir, sin registro."/>
   <meta name="robots" content="index,follow"/>
   <link rel="canonical" href="https://calendariopersonalizado.es/"/>
@@ -132,16 +132,32 @@
   .site-nav a{ min-height:48px; }
 }
 
-/* SEO/UX blocks */
-.answer-first ul{ margin: 0.5rem 0 0; padding-left: 1.2rem; }
-.faq-block details{ padding: 0.5rem 0; border-top: 1px solid rgba(255,255,255,0.08); }
-.faq-block details:last-child{ border-bottom: 1px solid rgba(255,255,255,0.08); }
-.faq-block summary{ cursor: pointer; font-weight: 600; }
-.related ul{ padding-left: 1.2rem; }
+/* Improved tap targets for internal calendar links */
+.card a[href="/calendario-con-fotos"],
+.card a[href="/calendario-anual-pdf-imprimir"],
+.card a[href="/calendario-a3-personalizado"],
+.card a[href^="/calendario-"]{
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
+  padding:0.35rem 0.25rem;
+}
 
-.quick-howto ol{ padding-left: 1.2rem; margin: 0.5rem 0 0; }
-.quick-howto .note{ margin-top: 0.5rem; opacity: 0.95; }
-.quick-howto code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 0.95em; }
+/* Extra spacing to avoid overlapping tap areas */
+.card ul li,
+.card ol li{
+  margin:0.25rem 0;
+}
+
+@media (pointer: coarse){
+  .card a[href="/calendario-con-fotos"],
+  .card a[href="/calendario-anual-pdf-imprimir"],
+  .card a[href="/calendario-a3-personalizado"],
+  .card a[href^="/calendario-"]{
+    min-height:48px;
+    padding:0.5rem 0.35rem;
+  }
+}
 </style>
 
   <!-- Schema (SoftwareApplication + HowTo + FAQPage) -->
@@ -202,23 +218,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- HOME HERO (SEO + UX) -->
     <section class="hero" aria-label="Crear calendario personalizado gratis en PDF">
       <div>
-        <h1>Calendario personalizado en PDF A3</h1>
-<section class="card answer-first" id="app-intro">
-  <p><strong>Genera tu calendario en minutos:</strong> elige año y formato, añade fotos (opcional) y descarga el PDF A3 listo para imprimir.</p>
-  <p><a class="btn secondary" href="/calendario-con-fotos">Calendario con fotos</a> <a class="btn secondary" href="/calendario-anual-pdf-imprimir">Calendario anual PDF</a> <a class="btn secondary" href="/calendario-a3-personalizado">Calendario A3</a></p>
-</section>
-<section class="card quick-howto" id="como-usar-20-segundos">
-  <h2>Cómo se usa en 20 segundos</h2>
-  <ol>
-    <li><strong>Elige el año y el formato</strong> (A3 vertical u horizontal).</li>
-    <li><strong>Añade tus fotos</strong> (opcional): portada, cabeceras o fotos por día.</li>
-    <li><strong>Descarga el PDF</strong> listo para imprimir.</li>
-  </ol>
-  <p class="note"><strong>Tip:</strong> si quieres asignación automática por día, nombra las fotos como <code>0101.jpg</code> (1 de enero) o <code>20260101.png</code>.</p>
-  <p><a class="btn primary" href="/#app">Abrir el generador</a></p>
-</section>
-
-
+        <h1>Calendario personalizado online gratis (PDF para imprimir)</h1>
         <p>
           Generador online para crear un calendario A3 con fotos por día, portada y cabeceras mensuales.
           Sin registro y listo para imprimir.
@@ -453,16 +453,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><strong>Hogar:</strong> organiza el año y decora con recuerdos.</li>
     <li><strong>Escuela:</strong> calendario escolar y eventos importantes.</li>
     <li><strong>Empresa:</strong> calendario corporativo y planificación.</li>
-  </ul>
-</section>
-<section class="card related">
-  <h2>Relacionado</h2>
-  <ul>
-    <li><a href="/calendario-con-fotos">Calendario con fotos personalizado</a></li>
-    <li><a href="/calendario-anual-pdf-imprimir">Calendario anual en PDF para imprimir</a></li>
-    <li><a href="/calendario-a3-personalizado">Calendario A3 personalizado</a></li>
-    <li><a href="/como-funciona">Cómo funciona</a></li>
-    <li><a href="/faq">FAQ</a></li>
   </ul>
 </section>
 </main>

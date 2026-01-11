@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>FAQ calendario personalizado | Fotos, PDF A3 e impresión</title>
+  <title>Preguntas frecuentes | Calendario personalizado gratis (PDF e impresión)</title>
   <meta name="description" content="Dudas sobre el calendario personalizado: fotos por día, PDF A3 para imprimir, cabeceras, fondos, festivos, ZIP y descarga."/>
   <meta name="robots" content="index,follow"/>
   <link rel="canonical" href="https://calendariopersonalizado.es/faq"/>
@@ -45,12 +45,32 @@
   border:0 !important;
 }
 
-/* SEO/UX blocks */
-.answer-first ul{ margin: 0.5rem 0 0; padding-left: 1.2rem; }
-.faq-block details{ padding: 0.5rem 0; border-top: 1px solid rgba(255,255,255,0.08); }
-.faq-block details:last-child{ border-bottom: 1px solid rgba(255,255,255,0.08); }
-.faq-block summary{ cursor: pointer; font-weight: 600; }
-.related ul{ padding-left: 1.2rem; }
+/* Improved tap targets for internal calendar links */
+.card a[href="/calendario-con-fotos"],
+.card a[href="/calendario-anual-pdf-imprimir"],
+.card a[href="/calendario-a3-personalizado"],
+.card a[href^="/calendario-"]{
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
+  padding:0.35rem 0.25rem;
+}
+
+/* Extra spacing to avoid overlapping tap areas */
+.card ul li,
+.card ol li{
+  margin:0.25rem 0;
+}
+
+@media (pointer: coarse){
+  .card a[href="/calendario-con-fotos"],
+  .card a[href="/calendario-anual-pdf-imprimir"],
+  .card a[href="/calendario-a3-personalizado"],
+  .card a[href^="/calendario-"]{
+    min-height:48px;
+    padding:0.5rem 0.35rem;
+  }
+}
 </style>
 
   <script type="application/ld+json">
@@ -82,12 +102,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <section class="card">
-      <h1>Preguntas frecuentes del calendario personalizado</h1>
-<section class="card answer-first" id="resumen">
-  <p><strong>Respuestas rápidas sobre fotos por día, PDF A3 para imprimir, cabeceras, ZIP y descarga.</strong></p>
-  <p><a class="btn primary" href="/#app">Ir al generador</a> <a class="btn secondary" href="/calendario-con-fotos">Ver calendario con fotos</a></p>
-</section>
-
+      <h1>Preguntas frecuentes sobre el calendario personalizado</h1>
       <h2>Calendario personalizado gratis y online</h2>
       <div class="faq-accordion">
         <details><summary><strong>¿Es gratis y sin registro?</strong></summary><p>Sí. Puedes crear el calendario de forma gratuita y sin registrarte.</p></details>
@@ -161,14 +176,3 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </body>
 </html>
-
-<section class="card related">
-  <h2>Relacionado</h2>
-  <ul>
-    <li><a href="/calendario-con-fotos">Calendario con fotos personalizado</a></li>
-    <li><a href="/calendario-anual-pdf-imprimir">Calendario anual en PDF para imprimir</a></li>
-    <li><a href="/calendario-a3-personalizado">Calendario A3 personalizado</a></li>
-    <li><a href="/como-funciona">Cómo funciona</a></li>
-    <li><a href="/faq">FAQ</a></li>
-  </ul>
-</section>
