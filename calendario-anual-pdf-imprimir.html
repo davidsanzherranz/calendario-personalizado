@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Calendario anual en PDF para imprimir | Gratis y online</title>
+  <title>Calendario anual en PDF para imprimir (gratis y online) | A3 listo para imprimir</title>
   <meta name="description" content="Genera un calendario anual personalizado y descárgalo en PDF A3 listo para imprimir. Portada, meses completos, fotos por día y cabeceras por mes."/>
   <meta name="robots" content="index,follow"/>
   <link rel="canonical" href="https://calendariopersonalizado.es/calendario-anual-pdf-imprimir"/>
@@ -41,33 +41,66 @@
   border:0 !important;
 }
 
-/* Improved tap targets for internal calendar links */
-.card a[href="/calendario-con-fotos"],
-.card a[href="/calendario-anual-pdf-imprimir"],
-.card a[href="/calendario-a3-personalizado"],
-.card a[href^="/calendario-"]{
-  display:inline-flex;
-  align-items:center;
-  min-height:44px;
-  padding:0.35rem 0.25rem;
-}
+/* SEO/UX blocks */
+.answer-first ul{ margin: 0.5rem 0 0; padding-left: 1.2rem; }
+.faq-block details{ padding: 0.5rem 0; border-top: 1px solid rgba(255,255,255,0.08); }
+.faq-block details:last-child{ border-bottom: 1px solid rgba(255,255,255,0.08); }
+.faq-block summary{ cursor: pointer; font-weight: 600; }
+.related ul{ padding-left: 1.2rem; }
 
-/* Extra spacing to avoid overlapping tap areas */
-.card ul li,
-.card ol li{
-  margin:0.25rem 0;
-}
-
-@media (pointer: coarse){
-  .card a[href="/calendario-con-fotos"],
-  .card a[href="/calendario-anual-pdf-imprimir"],
-  .card a[href="/calendario-a3-personalizado"],
-  .card a[href^="/calendario-"]{
-    min-height:48px;
-    padding:0.5rem 0.35rem;
-  }
-}
+.quick-howto ol{ padding-left: 1.2rem; margin: 0.5rem 0 0; }
+.quick-howto .note{ margin-top: 0.5rem; opacity: 0.95; }
+.quick-howto code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 0.95em; }
 </style>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿En qué tamaño se descarga el calendario?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Se descarga en PDF A3, listo para imprimir."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo imprimo a escala 100%?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "En el diálogo de impresión selecciona “tamaño real” o “escala 100%” para evitar recortes o ampliaciones."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Incluye todos los meses en una sola descarga?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. El PDF agrupa el año completo para imprimir o encuadernar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo añadir fotos y cabeceras?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Puedes añadir portada, cabeceras por mes y fotos opcionales antes de exportar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Vale para 2026, 2027…?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Elige el año en el generador y crea el calendario del año que necesites."
+      }
+    }
+  ]
+}
+  </script>
 </head>
 <body>
 
@@ -84,7 +117,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <section class="card">
-      <h1>Calendario anual en PDF listo para imprimir</h1>
+      <h1>Calendario anual en PDF para imprimir</h1>
+<section class="card answer-first" id="resumen">
+  <p><strong>Genera un calendario anual personalizado y descárgalo en PDF A3 listo para imprimir.</strong></p>
+  <ul>
+      <li>Año completo en PDF (A3)</li>
+      <li>Vertical u horizontal</li>
+      <li>Portada y cabeceras (opcional)</li>
+      <li>Sin registro</li>
+  </ul>
+  <p><a class="btn primary" href="/#app">Crear calendario ahora</a> <a class="btn secondary" href="/como-funciona">Ver cómo funciona</a></p>
+</section>
+<section class="card quick-howto" id="como-usar-20-segundos">
+  <h2>Cómo se usa en 20 segundos</h2>
+  <ol>
+    <li><strong>Elige el año y el formato</strong> (A3 vertical u horizontal).</li>
+    <li><strong>Añade tus fotos</strong> (opcional): portada, cabeceras o fotos por día.</li>
+    <li><strong>Descarga el PDF</strong> listo para imprimir.</li>
+  </ol>
+  <p class="note"><strong>Tip:</strong> si quieres asignación automática por día, nombra las fotos como <code>0101.jpg</code> (1 de enero) o <code>20260101.png</code>.</p>
+  <p><a class="btn primary" href="/#app">Abrir el generador</a></p>
+</section>
+
+<div class="card">
+  <p id="enlaces-contexto">Si quieres personalizarlo más con imágenes, mira el <a href="/calendario-con-fotos">calendario con fotos personalizado</a>. Si lo vas a imprimir en copistería, te puede interesar el <a href="/calendario-a3-personalizado">calendario A3 personalizado</a>.</p>
+</div>
+
       <p>Genera un PDF anual con portada, página en blanco y meses de enero a diciembre. El formato se exporta como A3 vertical u horizontal.</p>
 
       <h2>Qué revisar antes de exportar</h2>
@@ -100,3 +158,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </body>
 </html>
+
+<section class="card faq-block" id="preguntas-frecuentes">
+  <h2>Preguntas frecuentes</h2>
+
+  <details class="faq-item">
+    <summary>¿En qué tamaño se descarga el calendario?</summary>
+    <p>Se descarga en PDF A3, listo para imprimir.</p>
+  </details>
+
+  <details class="faq-item">
+    <summary>¿Cómo imprimo a escala 100%?</summary>
+    <p>En el diálogo de impresión selecciona “tamaño real” o “escala 100%” para evitar recortes o ampliaciones.</p>
+  </details>
+
+  <details class="faq-item">
+    <summary>¿Incluye todos los meses en una sola descarga?</summary>
+    <p>Sí. El PDF agrupa el año completo para imprimir o encuadernar.</p>
+  </details>
+
+  <details class="faq-item">
+    <summary>¿Puedo añadir fotos y cabeceras?</summary>
+    <p>Sí. Puedes añadir portada, cabeceras por mes y fotos opcionales antes de exportar.</p>
+  </details>
+
+  <details class="faq-item">
+    <summary>¿Vale para 2026, 2027…?</summary>
+    <p>Sí. Elige el año en el generador y crea el calendario del año que necesites.</p>
+  </details>
+</section>
+<section class="card" id="en-resumen">
+  <h2>En resumen</h2>
+  <ul>
+    <li><strong>Qué es:</strong> Genera un calendario anual personalizado y descárgalo en PDF A3 listo para imprimir.</li>
+    <li><strong>Qué obtienes:</strong> un PDF A3 listo para imprimir.</li>
+    <li><strong>Cómo empezar:</strong> abre el generador y ajusta el calendario en minutos.</li>
+  </ul>
+  <p><a class="btn primary" href="/#app">Crear calendario ahora</a></p>
+</section>
+<section class="card related">
+  <h2>Relacionado</h2>
+  <ul>
+    <li><a href="/calendario-con-fotos">Calendario con fotos personalizado</a></li>
+    <li><a href="/calendario-anual-pdf-imprimir">Calendario anual en PDF para imprimir</a></li>
+    <li><a href="/calendario-a3-personalizado">Calendario A3 personalizado</a></li>
+    <li><a href="/como-funciona">Cómo funciona</a></li>
+    <li><a href="/faq">FAQ</a></li>
+  </ul>
+</section>
