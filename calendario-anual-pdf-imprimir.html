@@ -2,7 +2,30 @@
 <html lang="es">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  
+<script src="https://js-de.sentry-cdn.com/57292a361610518a4a1517a13bb6bdd1.min.js" crossorigin="anonymous"></script>
+<script>
+  Sentry.onLoad(function() {
+    Sentry.init({
+      dsn: "https://57292a361610518a4a1517a13bb6bdd1@o4510790060015616.ingest.de.sentry.io/4510790065061968",
+      release: "web-calendario@20260128210911",
+      environment: (location.hostname === "localhost" || location.hostname === "127.0.0.1") ? "development" : "production",
+      tracesSampleRate: 0,
+      replaysSessionSampleRate: 0,
+      replaysOnErrorSampleRate: 0,
+      beforeSend: function(event) {
+        try {
+          if (window.__WC_APP_STATE__) {
+            event.extra = event.extra || {};
+            event.extra.wc = window.__WC_APP_STATE__;
+          }
+        } catch (e) {}
+        return event;
+      }
+    });
+  });
+</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Calendario anual en PDF para imprimir (gratis y online) | A3 listo para imprimir</title>
   <meta name="description" content="Genera un calendario anual personalizado y descárgalo en PDF A3 listo para imprimir. Portada, meses completos, fotos por día y cabeceras por mes."/>
   <meta name="robots" content="index,follow"/>
@@ -156,8 +179,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
  
   <div class="wrap">
     <div class="top">
-      <a class="btn" href="./index.html#app">CREAR PDF ANUAL</a>
-      <a class="btn secondary" href="./como-funciona.html">CÓMO FUNCIONA</a>
+      <a class="btn" href="/#app">CREAR PDF ANUAL</a>
+      <a class="btn secondary" href="/como-funciona">CÓMO FUNCIONA</a>
       <a class="btn secondary" href="./imprimir-calendario-a3.html">IMPRIMIR A3</a>
     </div>
 
@@ -198,11 +221,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li>Festivos extra: listado en formato YYYY-MM-DD.</li>
       </ul>
 
-      <p><a href="./index.html#app">Abrir el generador y exportar el PDF anual</a></p>
+      <p><a href="/#app">Abrir el generador y exportar el PDF anual</a></p>
     </section>
   </div>
-</body>
-</html>
+
 
 <section class="card faq-block" id="preguntas-frecuentes">
   <h2>Preguntas frecuentes</h2>
@@ -251,3 +273,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="/faq">FAQ</a></li>
   </ul>
 </section>
+
+</body>
+</html>

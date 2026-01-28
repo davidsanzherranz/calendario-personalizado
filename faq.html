@@ -2,7 +2,30 @@
 <html lang="es">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  
+<script src="https://js-de.sentry-cdn.com/57292a361610518a4a1517a13bb6bdd1.min.js" crossorigin="anonymous"></script>
+<script>
+  Sentry.onLoad(function() {
+    Sentry.init({
+      dsn: "https://57292a361610518a4a1517a13bb6bdd1@o4510790060015616.ingest.de.sentry.io/4510790065061968",
+      release: "web-calendario@20260128210911",
+      environment: (location.hostname === "localhost" || location.hostname === "127.0.0.1") ? "development" : "production",
+      tracesSampleRate: 0,
+      replaysSessionSampleRate: 0,
+      replaysOnErrorSampleRate: 0,
+      beforeSend: function(event) {
+        try {
+          if (window.__WC_APP_STATE__) {
+            event.extra = event.extra || {};
+            event.extra.wc = window.__WC_APP_STATE__;
+          }
+        } catch (e) {}
+        return event;
+      }
+    });
+  });
+</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>FAQ calendario personalizado | Fotos, PDF A3 e impresión</title>
   <meta name="description" content="Dudas sobre el calendario personalizado: fotos por día, PDF A3 para imprimir, cabeceras, fondos, festivos, ZIP y descarga."/>
   <meta name="robots" content="index,follow"/>
@@ -122,8 +145,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="wrap">
     <div class="top">
-      <a class="btn" href="./index.html#app">IR AL GENERADOR</a>
-      <a class="btn secondary" href="./como-funciona.html">CÓMO FUNCIONA</a>
+      <a class="btn" href="/#app">IR AL GENERADOR</a>
+      <a class="btn secondary" href="/como-funciona">CÓMO FUNCIONA</a>
     </div>
 
     <section class="card">
@@ -200,12 +223,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <p style="color:#a8b0c2;line-height:1.55;margin-top:14px;">
-        Si tu duda no está aquí, puedes escribir en la página de <a href="./contacto.html">contacto</a>.
+        Si tu duda no está aquí, puedes escribir en la página de <a href="/contacto">contacto</a>.
       </p>
     </section>
   </div>
-</body>
-</html>
+
 
 <section class="card related">
   <h2>Relacionado</h2>
@@ -217,3 +239,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="/faq">FAQ</a></li>
   </ul>
 </section>
+
+</body>
+</html>

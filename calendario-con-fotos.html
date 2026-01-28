@@ -2,7 +2,30 @@
 <html lang="es">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  
+<script src="https://js-de.sentry-cdn.com/57292a361610518a4a1517a13bb6bdd1.min.js" crossorigin="anonymous"></script>
+<script>
+  Sentry.onLoad(function() {
+    Sentry.init({
+      dsn: "https://57292a361610518a4a1517a13bb6bdd1@o4510790060015616.ingest.de.sentry.io/4510790065061968",
+      release: "web-calendario@20260128210911",
+      environment: (location.hostname === "localhost" || location.hostname === "127.0.0.1") ? "development" : "production",
+      tracesSampleRate: 0,
+      replaysSessionSampleRate: 0,
+      replaysOnErrorSampleRate: 0,
+      beforeSend: function(event) {
+        try {
+          if (window.__WC_APP_STATE__) {
+            event.extra = event.extra || {};
+            event.extra.wc = window.__WC_APP_STATE__;
+          }
+        } catch (e) {}
+        return event;
+      }
+    });
+  });
+</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Calendario con fotos personalizado (online y gratis) | PDF A3 para imprimir</title>
   <meta name="description" content="Crea gratis un calendario con fotos personalizado: una foto por día, portada y cabeceras mensuales. Descarga el PDF A3 listo para imprimir, sin registro."/>
   <meta name="robots" content="index,follow"/>
@@ -156,9 +179,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
   <div class="wrap">
     <div class="top">
-      <a class="btn" href="./index.html#app">CREAR CALENDARIO CON FOTOS</a>
-      <a class="btn secondary" href="./como-funciona.html">CÓMO FUNCIONA</a>
-      <a class="btn secondary" href="./faq.html">FAQ</a>
+      <a class="btn" href="/#app">CREAR CALENDARIO CON FOTOS</a>
+      <a class="btn secondary" href="/como-funciona">CÓMO FUNCIONA</a>
+      <a class="btn secondary" href="/faq">FAQ</a>
     </div>
 
         <section class="card">
@@ -223,12 +246,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <hr class="hr"/>
 
-      <p><a href="./index.html#app">Ir al generador de calendario con fotos</a></p>
-      <p><a href="./faq.html">Ver preguntas frecuentes</a> · <a href="./como-funciona.html">Cómo funciona</a></p>
+      <p><a href="/#app">Ir al generador de calendario con fotos</a></p>
+      <p><a href="/faq">Ver preguntas frecuentes</a> · <a href="/como-funciona">Cómo funciona</a></p>
     </section>
   </div>
-</body>
-</html>
+
 
 <section class="card faq-block" id="preguntas-frecuentes">
   <h2>Preguntas frecuentes</h2>
@@ -277,3 +299,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="/faq">FAQ</a></li>
   </ul>
 </section>
+
+</body>
+</html>

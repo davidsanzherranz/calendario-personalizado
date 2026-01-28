@@ -2,7 +2,30 @@
 <html lang="es">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  
+<script src="https://js-de.sentry-cdn.com/57292a361610518a4a1517a13bb6bdd1.min.js" crossorigin="anonymous"></script>
+<script>
+  Sentry.onLoad(function() {
+    Sentry.init({
+      dsn: "https://57292a361610518a4a1517a13bb6bdd1@o4510790060015616.ingest.de.sentry.io/4510790065061968",
+      release: "web-calendario@20260128210911",
+      environment: (location.hostname === "localhost" || location.hostname === "127.0.0.1") ? "development" : "production",
+      tracesSampleRate: 0,
+      replaysSessionSampleRate: 0,
+      replaysOnErrorSampleRate: 0,
+      beforeSend: function(event) {
+        try {
+          if (window.__WC_APP_STATE__) {
+            event.extra = event.extra || {};
+            event.extra.wc = window.__WC_APP_STATE__;
+          }
+        } catch (e) {}
+        return event;
+      }
+    });
+  });
+</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Cómo crear un calendario personalizado (paso a paso) | PDF A3</title>
   <meta name="description" content="Guía paso a paso para crear un calendario personalizado online: portada, cabeceras por mes, fotos por día y descarga en PDF A3 listo para imprimir."/>
   <meta name="robots" content="index,follow"/>
@@ -127,8 +150,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="wrap">
     <div class="top">
-      <a class="btn" href="./index.html#app">IR AL GENERADOR</a>
-      <a class="btn secondary" href="./faq.html">FAQ</a>
+      <a class="btn" href="/#app">IR AL GENERADOR</a>
+      <a class="btn secondary" href="/faq">FAQ</a>
       <span class="chip">A3</span>
       <span class="chip">PDF</span>
       <span class="chip">FOTOS POR DÍA</span>
@@ -186,11 +209,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li>Usa Exportar ZIP / Importar ZIP para guardar y recuperar configuración e imágenes.</li>
       </ul>
 
-      <p><a href="./index.html#app">Volver al generador</a></p>
+      <p><a href="/#app">Volver al generador</a></p>
     </section>
   </div>
-</body>
-</html>
+
 
 <section class="card related">
   <h2>Relacionado</h2>
@@ -202,3 +224,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="/faq">FAQ</a></li>
   </ul>
 </section>
+
+</body>
+</html>
